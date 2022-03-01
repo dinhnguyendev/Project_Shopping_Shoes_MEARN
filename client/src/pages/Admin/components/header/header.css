@@ -1,0 +1,274 @@
+.header__admin{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: white;
+    color: #333333;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   
+    box-shadow: 0 1px 4px 0 rgb(74 74 78 / 12%);
+}
+.header__admin__flex{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 15px;
+}
+.header__item{
+ display: flex;
+ align-items: center;
+}
+.header__icon{
+}
+.header__logo{
+    font-size: 30px;
+    color: aqua;
+
+}
+.header__text{
+    text-transform: capitalize;
+    font-size: 18px;
+    padding-left: 10px;
+    color: #999;
+}
+.header__content{
+    display: flex;
+    align-items: center;
+}
+.header__content__profile{
+    position: relative;
+    margin-right: 30px;
+    padding-bottom: 7px;
+    
+}
+.header__content__profile__hover{
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 2px 16px 2px 16px;
+    border-radius: 25px;
+    
+}
+
+.header__content__profile__hover:hover{
+    background-color: #F0F0F0;
+    cursor: pointer;
+}
+
+.header__content__profile::after{
+    position: absolute;
+    top: 0px;
+    right: -30px;
+    content: '';
+    width: 1px;
+    height: 100%;
+    background-color: #e8e8e8;
+    display: block;
+}
+@keyframes show {
+    from{
+        opacity: 0;
+        transform: scale(0);
+    }to{
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+.header__content__profile__list{
+    position: absolute;
+    top: 100%;
+    left: 0px;
+    background-color: white;
+    width: 100%;
+    border-radius: 5px;
+    transform-origin: top center;
+    animation: show ease-in-out 0.25s;
+    box-shadow: 0 0 16px 0 rgb(0 0 0 / 10%), 0 8px 16px 0 rgb(0 0 0 / 6%);
+    display: none;
+}
+.header__content__poniter{
+    position: absolute;
+    content: '';
+    bottom: 100%;
+    right: 40%;
+    width:18px;
+    display: block;
+    height:18px;
+    overflow: hidden;
+    
+}
+.header__content__poniter::before{
+    position:absolute;
+    content:'';
+    top:80%; left:0;
+    width:100%; height:100%;
+    background-color : white;
+    transform: rotate(45deg);
+    border: 1px solid #F0F0F0;
+}
+
+.header__content__profile:hover .header__content__profile__list{
+    display: block;
+}
+
+.header__content__profile__item{
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+    cursor: pointer;
+}
+.header__content__profile__item{
+    padding: 10px 0px;
+    
+
+}
+.header__content__profile__item__icon{
+    margin-right: 5px;
+}
+.header__content__profile__item:hover{
+    background-color: #F5F5F5;
+
+}
+.header__content__image{
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+}
+.header__content__name{
+    margin-left: 15px;
+
+}
+.header__content__category{
+    position: relative;
+    margin-left: 30px;
+    margin-right: 30px;
+    padding-bottom: 5px;
+}
+
+.header__content__category__icon{
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.header__content__category__icon:hover{
+    background-color: #F0F0F0;
+}
+.header__content__icon__img{
+    font-size: 20px;
+    color: #555;
+}
+.header__content__icon__list{
+    position: absolute;
+    top: calc(100% + 2px);
+    right: calc(100% - 183px);
+    width: 350px;
+    height: auto;
+    animation: show ease-in-out 0.3s;
+    background-color: white;
+    transform-origin: 60% top;
+    box-shadow: 0 0 16px 0 rgb(0 0 0 / 10%), 0 8px 16px 0 rgb(0 0 0 / 6%);
+    display: none;
+}
+.header__content__icon__list__item{
+
+}
+.header__content__category__pointer{
+    position: absolute;
+    content: '';
+    width: 15px;
+    height: 15px;
+    bottom: 100%;
+    right: 45%;
+    overflow: hidden;
+    background-color: transparent;
+}
+
+.header__content__category__pointer::before{
+    position: absolute;
+    content: '';
+    top: 69%;   
+    left: 0;
+    height: 100%;
+    width: 100%;
+    border: 1px solid white;
+    transform: rotate(45deg);
+    border: 1px solid #dcdce0;
+    background-color: white;
+
+}
+.header__content__category:hover .header__content__icon__list{
+    display: block;
+}
+.header__content__notification{
+    margin-left: 30px;
+}
+.header__content__list{
+
+}
+
+.header__content__icon__list__flex{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+.header__content__icon__list__item{
+    width: calc(100% / 3);
+   margin-top: 10px;
+}
+.header__content__icon__details{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.header__content__icon__svg__padding__1{
+    padding: 10px;
+    background-image: url('https://deo.shopeemobile.com/shopee/shopee-seller-live-sg/rootpages/static/framework/image/bg-product.f54d9f2.png');
+    border-radius: 50%;
+}
+.header__content__icon__svg__padding__2{
+    padding: 10px;
+    background-image: url('https://deo.shopeemobile.com/shopee/shopee-seller-live-sg/rootpages/static/framework/image/bg-category.54362e1.png');
+    border-radius: 50%;
+}
+.header__content__icon__svg__padding__3{
+    padding: 10px;
+    background-image: url('https://deo.shopeemobile.com/shopee/shopee-seller-live-sg/rootpages/static/framework/image/bg-sales.fef6c9b.png');
+    border-radius: 50%;
+}
+.header__content__icon__svg__padding__4{
+    padding: 10px;
+    background-image: url("https://deo.shopeemobile.com/shopee/shopee-seller-live-sg/rootpages/static/framework/image/bg-income.83c58c7.png");
+    border-radius: 50%;
+}
+.header__content__icon__svg{
+    width: 30px;
+    fill: white;
+    height: 30px;
+    
+}
+.header__content__icon__heading{
+    font-size: 14px;
+    color: #666;
+    line-height: 18px;
+    text-align: center;
+    padding-top: 5px;
+}
+.header__content__brand{
+    margin-left: 30px;
+}
+.header__content__brand__text{
+    padding: 0px 30px;
+    line-height: 30px;
+    text-transform: uppercase;
+    font-weight: 300;
+    font-size: 20px;
+    border-radius: 16px;
+    border: 1px solid #dcdce0;
+}

@@ -1,0 +1,294 @@
+
+.grid-column-number-10{
+   width: 100%;
+
+}
+.account-profile{
+    background-color: #ffffff;
+    width: 100%;
+    padding: 0px 30px;
+    margin-bottom: 50px;
+}
+.account-profile-heading{
+    padding: 18px 0px;
+    border-bottom: 1px solid #757575;
+
+}
+.account-profile-heading-heading{
+    font-size: 18px;
+    color: #333;
+}
+.account-profile-text{
+    font-size: 14px;
+    color: #333;
+    margin-top: 3px;
+}
+
+.account-profile-container{
+    display: flex;
+    width: 100%;
+    padding-top: 30px;
+   
+}
+.account-profile-container-big{
+    flex: 1;
+}
+.account-profile-container-form{
+    width: 100%;
+    padding-right: 50px;
+}
+.account-profile-container-name{
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    width: 100%;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    margin-bottom: 30px;
+   
+  
+}
+.account-profile-container-name-heading{
+    color: #777777;
+    width: 100px;
+    text-align: right;
+    
+   
+}
+.account-profile-container-padding{
+    flex: 1;
+    padding-left: 20px;
+    height: 30px;
+}
+.account-profile-container-padding-x{
+    flex: 1;
+    padding-left: 20px;
+}
+.account-profile-container-name-text{
+    color: #333;
+    
+    
+}
+.account-profile-save{
+    padding-left: 120px;
+    padding-bottom: 60px;
+}
+.account-profile-save-btn{
+    height: 40px;
+    padding: 0 20px;
+    min-width: 70px;
+    max-width: 220px;
+    background-color: #EE4D2D;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+}
+.account-profile-save-btn:hover{
+    background-color: #F05D40;
+}
+.account-profile-container-name-heading-text{
+   
+}
+.account-profile-container-name{
+
+}
+.account-profile-container-name-heading{
+
+}
+.account-profile-container-name-inputname{
+   width: 100%;
+   padding: 10px;
+    height: 100%;
+    outline: none;
+    border: 1px solid rgba(0,0,0,.14) ;
+   
+
+}
+.account-profile-container-name-inputname:focus{
+    border: 1px solid rgba(0,0,0,0.4);
+    border-radius: 1px;
+    
+}
+ 
+.account-profile-container-name{
+
+}
+.account-profile-container-name-heading{
+
+}
+.account-profile-container-name-inputemail{
+    width: 100%;
+    padding: 10px;
+    height: 100%;
+    outline: none;
+    border: 1px solid rgba(0,0,0,.14) ;
+}
+.account-profile-container-name-inputemail:focus{
+    border: 1px solid rgba(0,0,0,0.4);
+    border-radius: 1px;
+    
+}
+.account-profile-container-name{
+
+}
+.account-profile-container-name-heading{
+
+}
+.account-profile-container-name-inputsdt{
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    outline: none;
+    border: 1px solid rgba(0,0,0,.14) ;
+}
+.account-profile-container-name-inputsdt:focus{
+    border: 1px solid rgba(0,0,0,0.4);
+    border-radius: 1px;
+    
+}
+.account-profile-container-name{
+
+}
+.account-profile-container-name-heading{
+
+}
+.account-profile-container-name-inputshop{
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    outline: none;
+    border: 1px solid rgba(0,0,0,.14) ;
+}
+.account-profile-container-name-inputshop:focus{
+    border: 1px solid rgba(0,0,0,0.4);
+    border-radius: 2px;
+    
+}
+.account-profile-container-name{
+
+}
+.account-profile-container-name-heading{
+
+}
+.account-profile-container-name-inputgender{
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+}
+.account-profile-container-name-inputshop-nam{
+    display: flex;
+    align-items: center;
+    padding-right: 12px;
+}
+.account-profile-container-name-inputshop-check{
+    width: 20px;
+    height: 20px;
+   
+}
+.account-profile-container-name-inputshop-check{
+    opacity: 0;
+    position: relative;
+    right: -18px;
+}
+.account-profile-container-name-inputshop-check + *::before {
+    
+    content: "";
+    display: inline-block;
+    vertical-align: bottom;
+    width: 14px;
+    height: 14px;
+    margin-right: 0.3rem;
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 0.1rem;
+    border-color: gray;
+  }
+.account-profile-container-name-inputshop-check:checked + *::before {
+    background: radial-gradient(#ED4D2D 0%, #ED4D2D 40%, transparent 50%, transparent);
+    border-color: #ED4D2D;
+  }
+
+.account-profile-container-name-inputshop-men-text{
+   
+}
+.account-profile-container-name-inputshop-nu{
+    display: flex;
+    align-items: center;
+    padding-right: 12px;
+}
+.account-profile-container-name-inputshop-check{
+    width: 20px;
+    height: 20px;
+}
+.account-profile-container-name-inputshop-men-text{
+
+}
+.account-profile-container-name-inputshop-khac{
+    display: flex;
+    align-items: center;
+    padding-right: 12px;
+}
+.account-profile-container-name-inputshop-check{
+    width: 20px;
+    height: 20px;
+}
+.account-profile-container-name-inputshop-men-text{
+
+}
+.account-profile-container-image{
+    width: 280px;
+    overflow: hidden;
+    
+}
+.account-profile-container-image-img{
+    text-align: center;
+    align-items: center;
+    border-left: .0625rem solid #efefef;
+}
+.account-profile-container-image-padding{
+    padding-top: 20px;
+}
+.account-profile-container-image-img-item{
+
+}
+.account-profile-container-image-img-item-img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    
+
+}
+.show-file{
+    margin-top: 20px;
+}
+.account-profile-container-iput-file{
+    margin-top: 20px;
+    display: none;
+}
+.account-profile-container-iput-file-btn{
+    padding: 10px 20px;
+    background-color: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 2px;
+    font-size: 14px ;
+    color: #555555;
+    display: inline-block;
+    cursor: pointer;
+   margin-top: 10px;
+ 
+  
+}
+.account-profile-container-image-img-item-btn:hover{
+    background-color: #FAFAFA;
+}
+.account-profile-container-image-img-text{
+    padding-top: 12px;
+    color: #999999;
+    font-size: 14px;
+}
+.account-profile-container-image-img-text-1{
+
+}
+.account-profile-container-image-img-text-2{
+
+}

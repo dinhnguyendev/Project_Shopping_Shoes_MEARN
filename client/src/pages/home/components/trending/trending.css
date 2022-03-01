@@ -1,0 +1,67 @@
+.container__trending{
+    margin-top: 40px;
+    position: relative;
+}
+.container__trending__heading{
+    margin-bottom: 5px;
+    font-size: 20px;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+.container__trending__image{
+    width: 100%;
+    transition: linear 0.25s;
+} 
+.container__trending__image:hover {
+    cursor: pointer;
+    transform: scale(1.01,1.01);
+}  
+.container__trending__img{
+    width: 100%;
+    height: auto;
+}
+.container__trending__text{
+    position: absolute;
+    bottom: 70px;
+    left: 30px;
+
+}
+.container__trending__text__title{
+    font-size: 20px;
+    font-weight: 500;
+
+}
+.container__trending__text__heading{
+    font-size: 50px;
+    font-weight: 700;
+    text-transform: uppercase;
+
+}
+.container__trending__text__button{
+    margin-top: 5px;
+}
+.container__trending__text__btn{
+    padding: 10px 30px;
+    border: none;
+    cursor: pointer;
+    border-radius: 30px;
+    color: var(--white-color);
+    font-size: 18px;
+    background-color: black;
+}
+.icon__next{
+    margin-left: 5px;
+    transition: linear 0.25s;
+}
+.container__trending__text__btn:hover .icon__next{
+    margin-left: 20px;
+    
+}
+.container__trending__text__btn:hover {
+    background-color: #333333;
+    
+}
+.container__trending__text__btn:hover .icon__next{
+    margin-left: 20px;
+    
+}

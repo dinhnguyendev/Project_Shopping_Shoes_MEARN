@@ -1,0 +1,86 @@
+.gripd{
+    width: 1330px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+.container__trademark{
+    margin-top:80px;
+}
+.container__trademark__heading{
+    text-align: center;
+    font-size: 30px;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 15px 0px;
+    color: var(--gray-color);
+}
+.container__trademark__list{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+}
+.container__trademark__item{
+    padding: 0px 5px;
+    width: calc(100%/3);
+    margin-top: 15px;
+    
+}
+.container__trademark__link{
+    position: relative;
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    
+}
+.container__trademark__link__pos{
+    position: relative;
+}
+.container__trademark__image{
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+.container__trademark__image__hover{
+    position: absolute;
+    top: 0;
+    z-index: 2;
+    left: 0;
+    width: 0;
+    height: calc(100% - 4px);
+    background-color: rgba(1, 1, 1, 0.2);
+    transition: linear 0.25s;
+    
+}
+.container__trademark__image__hover__text{
+    position: absolute;
+    top: calc(50% - 2px);
+    left: 0;
+    margin-left: 5px;
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    transition: linear 0.25s;
+    color: var(--white-color);
+}
+.container__trademark__image__hover__item2{
+    margin-left: 2px;
+}
+.container__trademark__link:hover .container__trademark__image__hover{
+    width: 100%;
+}
+.container__trademark__link:hover .container__trademark__image__hover__text{
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.container__trademark__text{
+    transition: all 0.2s;
+}
+.container__trademark__link:hover .container__trademark__text{
+    color: orangered;
+}

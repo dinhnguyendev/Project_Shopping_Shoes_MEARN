@@ -1,0 +1,53 @@
+.gripd{
+    width: 1330px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+.container__nike{
+    margin-top: 50px;
+}
+.container__nike__heading{
+    font-size: 22px;
+    font-weight: 500;
+    text-transform:capitalize;
+}
+.container__nike__image{
+    width: 100%;
+    margin-top: 5px;
+
+}
+.container__nike__img{
+    width: 100%;
+    transition: linear 0.25s;
+}
+.container__nike__img:hover {
+    cursor: pointer;
+    transform: scale(1.01,1.01);
+}  
+.container__nike__text{
+    text-align: center;
+    font-size: 40px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-top: 20px;
+
+}
+.container__nike__button{
+    text-align: center;
+}
+.container__nike__btn{
+    text-align: center;
+    border: none;
+    text-transform: capitalize;
+    padding: 10px 20px;
+    color: var(--white-color);
+    background-color:black;
+    font-size: 18px;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: linear 0.1s;
+}
+.container__nike__btn:hover{
+    background-color: #333333;
+    padding: 10px 30px;
+}

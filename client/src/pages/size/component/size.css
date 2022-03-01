@@ -1,0 +1,110 @@
+.size{
+    margin-top: 120px;
+    padding: 20px 0px;
+}
+.size__gripd{
+    width: 1200px;
+    max-width: 100%;
+    margin: 0 auto;
+    box-shadow: 0px 0px 5px 1px rgb(0 0 0 / 10%);
+    color: #555555;
+    padding-bottom: 30px;
+}
+.size__heading{
+    font-size: 20px;
+    padding: 15px 5px;
+    font-weight: 500;
+    border-bottom: 1px solid #ddd;
+}
+.size__container{
+    margin-top: 40px;
+    padding: 0px 15px;
+    text-align: center;
+}
+.size__image{
+    text-align: center;
+    width: 100%;
+}
+.size__img{
+    max-width: 100%;
+    vertical-align: middle;
+}
+.size__title{
+    font-size: 14px;
+    text-align: center;
+   margin: 2px 70px 10px 70px;
+}
+.size__title__two{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+.size__title__two b:first-child{
+    color: red;
+    font-size: 20px;
+    font-weight: 700;
+}
+.size__title__two b:nth-child(2){
+    color: #d9b91c;
+    font-size: 20px;
+    font-weight: 700;
+}
+.size__title__two b:last-child{
+    color: red;
+    font-size: 20px;
+    font-weight: 700;
+}
+.size__title__three{
+    font-style: italic;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+.size__image{
+    text-align: center;
+    width: 100%;
+}
+.size__image__title{
+    font-size: 18px;
+    font-weight: 400;
+    padding: 5px;
+    margin-bottom: 20px;
+    text-transform:initial;
+}
+.size__image__title span{
+    font-weight: 500;
+}
+.size__img__details{
+    max-width: 100%;
+    vertical-align: middle;
+}
+.size__next{
+    margin-top: 30px;
+}
+.size__notes__heading{
+    color: #ff0000;
+    font-size: 20px;
+    font-weight: 500;
+    padding: 5px 0px 5px 20px;
+    text-transform: initial;
+}
+.size__notes__content{
+    padding-left: 20px;
+    padding-right: 10px;
+    font-size: 14px;
+    color: #555555;
+}
+.size__notes__image{
+    width: 100%;
+    text-align: center;
+}
+.size__notes__image__img{
+    max-width: 100%;
+    object-fit: cover;
+}
+.size__image__title{
+    font-size: 14px;
+    font-weight: 300;
+}
+.size__video{
+    text-align: center;
+}

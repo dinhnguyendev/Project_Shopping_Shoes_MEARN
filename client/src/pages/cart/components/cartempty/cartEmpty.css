@@ -1,0 +1,24 @@
+.grid-image-empty {
+    height: 600px;
+    background-color: #F5F5F5;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.cart-empty-big {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.cart-empty-img{
+    width: 110px;
+    height: 100px;
+    margin: 0 auto;
+}
+.cart-empty-text {
+    text-align: center;
+    margin-top: 18px;
+    color: rgba(0, 0, 0, 0.5);
+    font-weight: 500;
+}

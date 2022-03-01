@@ -1,0 +1,18 @@
+.collection__page{
+    background-color: #F5F5F5;
+    margin-top: 120px;
+    
+}
+.collection__page__gripd{
+    display: flex;
+    align-items: flex-start;
+    width: 1200px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+.collection__page__navbar{
+    flex: 1;
+}
+.collection__page__container{
+    flex: 4;
+}

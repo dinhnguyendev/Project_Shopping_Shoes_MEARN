@@ -1,0 +1,281 @@
+.home__gird__colum__2{
+    width: 100%;
+}
+.home__navbar{
+
+}
+.home__navbar__category{
+
+}
+.home__navbar__heading{
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    font-size: 16px;
+    text-transform: uppercase;
+    color: #444444;
+}
+.home__navbar__icon{
+
+}
+.home__navbar__text{
+    margin-left: 5px;
+}
+.home__navbar__list{
+    padding: 0px;
+    list-style: none;
+    margin-top: 10px;
+}
+.home__navbar__list__item{
+    padding: 10px 0px 10px 5px;
+    text-transform: uppercase;
+    font-size: 15px;
+    font-weight: 300;
+    text-decoration: none;
+    display: block;
+    color: #555555;
+    border-top: 1px solid #ddd;
+}
+.home__navbar__list__item__add{
+    border-bottom: 1px solid #ddd;
+}
+.home__navbar__search{
+    margin-top: 30px;
+}
+.home__navbar__search__heading{
+    color: #444444;
+    font-size: 17px;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding-left: 8px;
+}
+.home__navbar__search__container{
+    margin-top: 20px;
+    border-top: 1px solid #ddd;
+}
+.home__navbar__search__text{
+    color: black;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-top: 10px;
+}
+.home__navbar__search__list{
+    margin-top: 10px;
+}
+.home__navbar__search__item{
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 5px 0px;
+    font-size: 15px;
+    cursor: pointer;
+    color: #555555;
+    text-transform: uppercase;
+    transition: all 0.1s;
+    cursor: pointer;
+}
+.home__navbar__search__item__input{
+
+}
+.home__navbar__search__item__label{
+    padding-left: 10px;
+    flex: 1;
+}
+.home__navbar__price{
+    margin-top: 25px;
+    border-top: 1px solid #ddd;
+}
+.home__navbar__price__heading{
+    margin-top: 10px;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: 600;
+}
+.home__navbar__price__container{
+
+}
+.home__navbar__price__list{
+
+}
+.home__navbar__price__list__item{
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 5px 0px;
+    font-size: 15px;
+    cursor: pointer;
+    color: #555555;
+   
+}
+.home__navbar__price__list__item__input{
+
+}
+.home__navbar__price__list__item__label{
+    padding-left: 5px;
+    flex: 1;
+    font-size: 16px;
+}
+.home__navbar__price__list__item__label:hover{
+    transition: all 0.2s;
+    cursor: pointer;
+}
+.home__navbar__size{
+    position: relative;
+    margin-top: 25px;
+    border-top: 1px solid #ddd;
+}
+.home__navbar__size__heading{
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.home__navbar__size__container{
+    margin-top: 5px;
+}
+.home__navbar__size__list__item{
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 5px 0px;
+    font-size: 15px;
+    cursor: pointer;
+    color: #555555;
+}
+.home__navbar__size__list__item__input{
+
+}
+.home__navbar__size__list__item__label{
+    padding-left: 5px;
+    font-size: 16px;
+}
+.home__navbar__size__list__item__label:hover{
+    transition: all 0.2s;
+    cursor: pointer;
+}
+.home__navbar__color{
+    margin-top: 25px;
+    border-top: 1px solid #ddd;
+}
+.home__navbar__color__heading{
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.home__navbar__color__container{
+    
+}
+.home__navbar__color__list__item{
+    position: relative;
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    padding: 5px 0px;
+    font-size: 15px;
+    cursor: pointer;
+    color: #555555;
+}
+.home__navbar__color__list__item__input{
+
+}
+
+.home__navbar__color__list__item__label{
+    font-size: 15px;
+    color: #555555;
+    padding-left: 5px;
+
+}
+.home__navbar__color__list__item__label:hover{
+    transition: all 0.2s;
+    cursor: pointer;
+    color: #F1FC68;
+}
+.home__navbar__input{
+    width: 16px;
+    height: 16px;
+}
+.home__navbar__input::before{
+    position: absolute;
+    content: "";
+    top: 7px;
+    left: 4px;
+    background-color: white;
+    display: block;
+    z-index: 1;
+    border: 1px solid #ddd;
+    width: 16px;
+    height: 16px;   
+}
+@keyframes Opacity {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+.home__navbar__input::after{
+    position: absolute;
+    content: "";
+    top: 11px;
+    left: 15px;
+    background-color: #ffba00;
+    display: block;
+    z-index: 10;
+    border: 1px solid #ddd;
+    width: 8px;
+    height: 8px;
+    animation: Opacity 0.3s;
+    z-index: 2;
+    display: none;
+
+}
+
+.home__navbar__input:checked:before{
+    background-color: orangered;
+    border: 2px solid #ddd;
+}
+.home__navbar__search__item:hover .home__navbar__input::after{
+    transition: all 0.2s;
+    display: block;
+   
+}
+.home__navbar__search__item:hover{
+    color: #F1FC68;
+    cursor: pointer;
+}
+.home__navbar__search__item__label:hover{
+    color: #F1FC68;
+    cursor: pointer;
+}
+
+.home__navbar__price__list__item:hover .home__navbar__input::after{
+    transition: all 0.2s;
+    display: block;
+}
+.home__navbar__price__list__item:hover{
+    color: #F1FC68;
+
+    cursor: pointer;
+}
+.home__navbar__size__list__item:hover .home__navbar__input::after{
+    transition: all 0.2s;
+    display: block;
+   
+}
+.home__navbar__size__list__item:hover{
+    color: #F1FC68;
+    cursor: pointer;
+}
+.home__navbar__color__list__item:hover .home__navbar__input::after{
+    transition: all 0.2s;
+    display: block;
+   
+}
+.home__navbar__color__list__item:hover{
+    color: #F1FC68;
+    cursor: pointer;
+}
+

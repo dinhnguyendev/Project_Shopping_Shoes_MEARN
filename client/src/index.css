@@ -1,0 +1,27 @@
+*{
+  box-sizing: border-box;
+  
+}
+body {
+ 
+  font-family:"Roboto", Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+}
+
+:root{
+  --white-color:#ffffff;
+  --hover-color:#cccccc;
+  --font-text-logo:'Courier New', Courier, monospace;
+  --bag-color:#F5F5F5;
+  --app-color: #F8462F;
+  --app-color-hover:#fb6445;
+  --gray-color:#555555;
+  --f4-color: #F4F4F4;
+  --color-btn-web:#55B3CF;
+  --color-btn-hover-web: #55B3FF;
+  --color-text-web: #371DFC;
+}
+
+

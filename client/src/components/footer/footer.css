@@ -1,0 +1,140 @@
+.footer{
+
+}
+.gird__footer{
+    width: 1200px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+.footer__hr{
+    display: block;
+    width: 100%;
+    height: 15px;
+    background-color: var(--f4-color);
+}
+.footer__container{
+    padding-bottom: 30px;
+}
+.footer__flex{
+    display: flex;
+    align-items: flex-start;
+    
+}
+.footer__item__store{
+  flex: 1.5;
+  padding-left: 10px;
+}
+.footer__item{
+  flex: 1;
+  padding: 0px 10px;
+}
+.footer__item__list{
+
+}
+.footer__item__heading{
+    font-size: 16px;
+    text-transform: uppercase;
+    color:black;
+    font-weight: 700;
+    line-height: 20px;
+    margin-top: 40px;
+
+}
+.footer__item__container{
+    margin-top: 15px;
+}
+.footer__item__container__store{
+    margin-bottom: 10px;
+}
+.footer__item__container__heading{
+    color: black;
+    font-size: 15px;
+    text-transform: uppercase;
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.footer__item__container__title{
+    margin-top: 3px;
+    font-size: 14px;
+    color: #777777;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.footer__item__flex__dowload{
+    margin-top: 15px;
+    display: flex;
+    align-items: flex-start;
+}
+.footer__item__qr{
+    width: 87px;
+    height: 87px;
+    cursor: pointer;
+}
+.footer__download{
+    margin-left: 10px;
+}
+.footer__download__appstore{
+    width: 94px;
+    height: 32px;
+    object-fit: contain;
+}
+.footer__download__googleplay{
+    width: 94px;
+    height: 32px;
+    object-fit: contain;
+}
+.footer__download__gallery{
+    width: 94px;
+    height: 32px;
+    object-fit: contain;
+}
+.footer__item__container__infor{
+    margin-top: 3px;
+    font-size: 15px;
+    color: #777777;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-transform: capitalize;
+    text-decoration: none;
+    margin-top: 5px;
+}
+.footer__item__link{
+    display: flex;
+    align-items: flex-start;
+    margin-top: 15px;
+}
+.footer__item__container__image{
+    padding: 0px;
+    margin-bottom: 12px;
+    margin-right: 16px;
+}
+.footer__item__container__certification{
+    color: black;
+    font-size: 15px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+.footer__item__container__certification__img{
+    width: 130px;
+    height: 40px;
+}
+.footer__item__container__img{
+    width: 32px;
+    height: 32px;
+}
+.footer__text{
+    padding-bottom: 20px;
+}
+.footer__br{
+    height: 1px;
+    margin: 10px 0px;
+    display: block;
+    background-color: #aaaaaa;
+}
+.footer__text__line{
+    font-size: 14px;
+    color: #777777;
+    text-align: center;
+}

@@ -1,0 +1,17 @@
+.account__page{
+    margin-top: 120px;
+    background-color: #F5F5F5;
+}
+.account__page__flex{
+    width: 1200px;
+    max-width: 100%;
+    margin: 0 auto;
+    display: flex;
+    padding-top: 20px;
+    padding-bottom: 50px;
+    align-items: flex-start;
+}
+.account__page__content{
+    flex: 1;
+    margin-left: 27px;
+}

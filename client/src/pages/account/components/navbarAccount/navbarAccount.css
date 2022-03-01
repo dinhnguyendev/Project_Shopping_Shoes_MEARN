@@ -1,0 +1,156 @@
+.account-navbar{
+    width: 180px;
+    padding-top: 15px;
+}
+.account-navbar-heading{
+    display: flex;
+    align-items: center;
+}
+.account-navbar-heading-image{
+    
+}
+.account-navbar-heading-name{
+    font-weight: 600;
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 5px;
+
+}
+.account-navbar-heading-img{
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 2px solid #DFDFDF;
+    cursor: pointer;
+}
+.account-navbar-heading-text{
+    padding-left: 15px;
+}
+.account-navbar-heading-link{
+    text-decoration: none;
+    color: #888888;
+    font-size: 14px;
+    
+}
+.account-navbar-container{
+    margin-top: 27px;
+}
+.account-navbar-container-list{
+
+}
+.account-navbar-container-flex{
+    margin-bottom: 15px;
+}
+.account-navbar-container-heading{
+    text-decoration: none;
+    font-size: 14px;
+    color: #333;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.account-navbar-container-heading:hover{
+    color: #EE4D2D;
+    cursor: pointer;
+}
+.account-navbar-container-image{
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+.account-navbar-container-heading-text{
+
+}
+.account-navbar-container-item-list{
+    margin-bottom: 15px;
+}
+.account-navbar-container-item{
+    padding-left: 34px;
+    margin-top: 17px;
+    height: 0px;
+    opacity: 0;
+    overflow: hidden;
+    transition: height .4s cubic-bezier(.4,0,.2,1),opacity .4s cubic-bezier(.4,0,.2,1);
+}
+.block{
+    opacity: 1;
+    height: auto;
+}
+.account-navbar-container-link{
+    text-decoration: none;
+    font-size: 14px;
+    color: #333;
+    text-transform: capitalize;
+}
+.account-navbar-container-link:hover{
+    color: #EE4D2D;
+}
+.account-navbar-container-item__notification{
+    padding-left: 34px;
+    margin-top: 17px;
+    opacity: 0;
+    height: 0px;
+    overflow: hidden;
+    transition: height .4s cubic-bezier(.4,0,.2,1),opacity .4s cubic-bezier(.4,0,.2,1);
+}
+.account-navbar-container-item-list__notification{
+    margin-bottom: 15px;
+}
+.account-navbar-container-link__notification{
+    text-decoration: none;
+    font-size: 14px;
+    color: #333;
+    text-transform: capitalize;
+}
+.account-navbar-container-link__notification:hover{
+    color: #EE4D2D;
+}
+.block1{
+    opacity: 1;
+    height: auto;
+}
+.account-navbar-container-orther-link{
+    text-decoration: none;
+    font-size: 14px;
+    color: #333;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+}
+.account-navbar-container-orther-link:hover{
+    color: #EE4D2D;
+}
+.account-navbar-container-image{
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+
+}   
+.account-navbar-container-orther-text{
+    
+}
+.account-navbar-container-notifition{
+    margin-top: 15px;
+}
+.account-navbar-container-notifition-link{
+    text-decoration: none;
+    font-size: 14px;
+    color: #333;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    
+}
+.account-navbar-container-notifition-link:hover{
+    color: #EE4D2D;
+}
+.account-navbar-container-notify-img{
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+.account-navbar-container-notifition-text{
+    
+}
