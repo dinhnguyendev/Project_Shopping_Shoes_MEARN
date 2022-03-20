@@ -1,6 +1,19 @@
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate, Link, useParams } from 'react-router-dom';
+import { getnavbarcategory, getproducts } from '../../redux/apiRequest';
 import './navbar.css';
 
 function Navbar() {
+    const navbar = useSelector(state => state.navbar.getnavbar?.navbarData);
+    console.log(navbar)
+    const handleNavbar = () => {
+        const { slug } = useParams();
+        console.log(slug);
+        const dispatch = useDispatch();
+        const navigate = useNavigate();
+        getproducts(dispatch, navigate, slug);
+    }
     return (
         <div class="home__gird__colum__2">
             <div class="home__navbar">
@@ -14,7 +27,10 @@ function Navbar() {
                         </div>
                     </div>
                     <div class="home__navbar__list">
-                        <a href="" class="home__navbar__list__item">giày cỏ tự nhiên</a>
+                        {navbar.map((categorys) => (
+                            <Link onClick={handleNavbar} to={`/collection/${categorys?._id}`} key={categorys?._id} class="home__navbar__list__item">{categorys?.name}</Link>
+                        ))}
+                        {/* <a href="" class="home__navbar__list__item">giày cỏ tự nhiên</a>
                         <a href="" class="home__navbar__list__item">giày cỏ nhân tạo</a>
                         <a href="" class="home__navbar__list__item">giày futsal</a>
                         <a href="" class="home__navbar__list__item">giày đá banh nike</a>
@@ -23,7 +39,7 @@ function Navbar() {
                         <a href="" class="home__navbar__list__item">giày đá banh asics</a>
                         <a href="" class="home__navbar__list__item">giày đá banh kamito</a>
                         <a href="" class="home__navbar__list__item home__navbar__list__item__add">phụ kiện bóng
-                            đá</a>
+                            đá</a> */}
                     </div>
                 </div>
                 <div class="home__navbar__search">

@@ -1,5 +1,12 @@
 import axios from "axios";
-import { getdetailsSuccsess, getdetailsFailed, getdetailsStart, getproductFailed, getproductStart, getproductSuccsess }
+import { getnavbarFailed, getnavbarStart, getnavbarSuccess } from "./navbarSlice";
+import {
+    getdetailsSuccsess, getdetailsFailed, getdetailsStart,
+    getproductFailed, getproductStart, getproductSuccsess,
+    addproductsStart,
+    addproductsSuccess,
+    addproductsFailed
+}
     from "./productSlice";
 import {
     loginFailed,
@@ -33,12 +40,12 @@ export const registerUser = async (user, dispatch, navigate) => {
         dispatch(registerFailed());
     }
 }
-export const logout = async (dispatch, id, navigate, token, jwtToken) => {
+export const logout = async (dispatch, id, navigate, tokens, axiosJWT) => {
     dispatch(logoutStart());
     try {
-        await jwtToken.post("http://localhost:5000/user/logout", {
+        await axios.post("http://localhost:5000/user/logout", {
             headers: {
-                token: `Bearer ${token}`
+                token: `Bearer ${tokens}`
             }
         });
         dispatch(logoutSuccess());
@@ -64,5 +71,23 @@ export const getdetailsproducts = async (dispatch, slug, navigate) => {
         dispatch(getdetailsSuccsess(res.data));
     } catch (error) {
         dispatch(getdetailsFailed());
+    }
+}
+export const addproducts = async (dispatch, navigate) => {
+    dispatch(addproductsStart());
+    try {
+        const res = await axios.post(`http://localhost:5000/products/add`);
+        dispatch(addproductsSuccess());
+    } catch (error) {
+        dispatch(addproductsFailed());
+    }
+}
+export const getnavbarcategory = async (dispatch, navigate) => {
+    dispatch(getnavbarStart());
+    try {
+        const res = await axios.get(`http://localhost:5000/navbar/category`);
+        dispatch(getnavbarSuccess(res.data));
+    } catch (error) {
+        dispatch(getnavbarFailed());
     }
 }

@@ -11,6 +11,11 @@ const productSlice = createSlice({
             isFetching: false,
             productdetail: null,
             error: false
+        },
+        addproducts: {
+            isFetching: false,
+            addproducts: false,
+            error: false
         }
     },
     reducers: {
@@ -43,6 +48,21 @@ const productSlice = createSlice({
             state.productdetails.isFetching = false;
             state.productdetails.productdetail = null;
             state.productdetails.error = true;
+        },
+        addproductsStart: (state) => {
+            state.addproducts.isFetching = true;
+            state.addproducts.addproducts = false;
+            state.addproducts.error = false;
+        },
+        addproductsSuccess: (state) => {
+            state.addproducts.isFetching = false;
+            state.addproducts.addproducts = true;
+            state.addproducts.error = false;
+        },
+        addproductsFailed: (state) => {
+            state.addproducts.isFetching = false;
+            state.addproducts.addproducts = false;
+            state.addproducts.error = true;
         }
     }
 });
@@ -52,5 +72,10 @@ export const {
     getproductSuccsess,
     getdetailsSuccsess,
     getdetailsStart,
-    getdetailsFailed } = productSlice.actions;
+    getdetailsFailed,
+    addproductsStart,
+    addproductsSuccess,
+    addproductsFailed
+}
+    = productSlice.actions;
 export default productSlice.reducer;

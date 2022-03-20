@@ -1,0 +1,120 @@
+.order__details{
+    padding: 15px;
+    background-color: #fff;
+}
+.order__details__info__customer{
+
+}
+.order__details__info__customer__flex{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    background-color: #e8e8e8;
+    border-top: 1px solid #757575;
+    border-bottom: 1px solid #757575;
+    border-right: 1px solid #757575;
+    
+}
+.order__details__info__customer__item{
+    width: calc(100%/6);
+    padding: 10px;
+    border-left: 1px solid #757575;
+}
+.order__details__info__customer__heading{
+}
+.order__details__info__products{
+    padding-top: 10px;
+    background-color: #fff;
+}
+.order__details__info__products__flex{
+    display: flex;
+    align-items: center;
+    border-top: 1px solid #858484;
+    border-bottom: 1px solid #858484;
+    border-right: 1px solid #858484;
+}
+.order__details__info__products__item{
+    width: calc(100%/6);
+    text-align: center;
+    border-left: 1px solid #858484;
+    padding: 10px;
+
+}
+.order__details__info__products__heading{
+
+}
+.order__details__category{
+    margin-top: 50px;
+}
+.order__details__category__flex{
+    display: flex;
+    align-items: center;
+    background-color: #e8e8e8;
+    border-top: 1px solid #858484;
+    border-bottom: 1px solid #858484;
+    border-right: 1px solid #858484;
+}
+.order__details__category__item{
+    flex: 1;
+    text-align: center;
+    border-left: 1px solid #858484;
+    padding: 10px;
+}
+.order__details__category__heading{
+
+}
+.order__details__category__heading__product{
+    flex: 4;
+    text-align: start;
+}
+.order__details__products{
+    margin-bottom: 20px;
+}
+.order__details__products__flex{
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #e8e8e8;
+    margin-top: 5px;
+}
+.order__details__products__item{
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+}
+.order__details__products__heading{
+    text-align: center;
+}
+.order__details__products__heading__big{
+    flex: 4;
+    text-align: start;
+}
+.order__details__products__heading__text{
+    width: 100%;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    word-break: break-all;
+    white-space: pre-wrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.order__details__button{
+    margin-top: 20px;
+
+}
+.order__details__button__flex{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}   
+.order__details__button__item{
+   margin-left: 10px;
+}
+.order__details__button__btn{
+    width: 150px;
+    height: 30px;
+    border: 1px solid #858484;
+    border-radius: 2px;
+    cursor: pointer;
+}

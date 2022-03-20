@@ -71,7 +71,11 @@
     width: 450px;
     
 }
-
+.container-slider-big{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .container-details-imge-differenr-item{
     
 
@@ -270,8 +274,8 @@ sup{
     z-index: 3;
     font-size: 10px;
     color: white;
-    display: none;
     border: none;
+    display: none;
 } 
 .container-details-button-color:hover{
     border: 1px solid #ED4D2D;
@@ -786,3 +790,4 @@ sup{
     background-color: #ffffff;
     margin-top: 20px;
 }
+

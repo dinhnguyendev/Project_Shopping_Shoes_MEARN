@@ -45,6 +45,18 @@
 }
 .navbar__heading__text__icon{
 }
+@keyframes show {
+    from{
+        opacity: 0;
+        transform: scale(0);
+        height: 0px;
+    }
+    to{
+        height: auto;
+        opacity: 1;
+        transform: scale(1);
+    }
+}
 .navbar__content{
     padding-left: 30px;
     margin-top: 5px;
@@ -53,11 +65,13 @@
     overflow: hidden;
     opacity: 0;
     height: 0;
-    transition: height 0.2s ease;
+    
 }
 .show{
     opacity: 1;
     height: auto;
+    transform: scale(1);    
+    animation: show ease-in 0.25s;
 }
 .navbar__content__item{
     padding: 5px 0px;

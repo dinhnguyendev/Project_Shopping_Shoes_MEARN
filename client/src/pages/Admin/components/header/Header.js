@@ -86,12 +86,40 @@ function Header() {
                         </div>
                     </div>
                     <div className="header__content__notification">
-                        <i class="fa-solid fa-bell"></i>
-                        <div className="header__content__list">
-                            <div className="header__content__list__item">
-
-                            </div>
+                        <div className="header__content__notification__item">
+                            <i class="fa-solid fa-bell"></i>
                         </div>
+                        <span className="header__content__notification__number">25</span>
+                        <ul class="header-navbar-list-notification-list">
+                            <div class="header-navbar-list-notification-list-padding">
+                                <div class="header-navbar-list-notification-heading">Thông báo đã nhận gần đây
+                                </div>
+
+                                <li class="header-navbar-list-notification-list-item">
+                                    <div class="header-navbar-list-notification-list-item-image">
+                                        <img src="https://images.ctfassets.net/hrltx12pl8hq/7yQR5uJhwEkRfjwMFJ7bUK/dc52a0913e8ff8b5c276177890eb0129/offset_comp_772626-opt.jpg?fit=fill&w=800&h=300"
+                                            alt="" class="header-navbar-list-notification-list-item-img" />
+                                    </div>
+                                    <div class="header-navbar-list-notification-list-item-text">
+                                        <div class="header-navbar-list-notification-list-item-text-heading">
+                                            asdasdas sadsad
+                                        </div>
+                                        <div
+                                            class="header-navbar-list-notification-list-item-text-container">
+                                            adssadasd
+                                        </div>
+                                        1222
+                                    </div>
+                                </li>
+
+
+                                <a to="/account/notifications/order" class="header-navbar-list-notification-link-user">
+                                    <li class="header-navbar-list-notification-link-user-item">Xem tất cả
+                                    </li>
+                                </a>
+                            </div>
+
+                        </ul>
                     </div>
                     <div className="header__content__brand">
                         <div className="header__content__brand__text">PAN</div>

@@ -4,17 +4,19 @@ import { BrowserRouter, Routes, Route, Link, useNavigate, useParams } from 'reac
 import './collectionPage.css';
 import Navbar from '../../components/navbar/Navbar';
 import Collection from './components/collection/Collection';
-import { getproducts } from '../../redux/apiRequest';
+import { getnavbar, getnavbarcategory, getproducts } from '../../redux/apiRequest';
 import { useDispatch, useSelector } from 'react-redux';
 
 function Collections() {
-    const naigate = useNavigate();
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const { slug } = useParams();
     console.log("slug:" + slug)
     useEffect(() => {
-        getproducts(dispatch, naigate, slug);
+        getproducts(dispatch, navigate, slug);
+
     }, []);
+
     return (
         <div className='collection__page'>
             <div className='collection__page__gripd'>

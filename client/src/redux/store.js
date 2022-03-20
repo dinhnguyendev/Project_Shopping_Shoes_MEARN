@@ -2,6 +2,7 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import userReducer from './userSlice';
 import storage from 'redux-persist/lib/storage';
 import productReducer from './productSlice';
+import navbarReducer from './navbarSlice';
 import {
     persistStore,
     persistReducer,
@@ -16,14 +17,15 @@ import {
 
 const rootReducer = combineReducers({
     user: userReducer,
-    products: productReducer
+    products: productReducer,
+    navbar: navbarReducer
 })
 
 const persistConfig = {
     key: 'root',
     version: 1,
     storage,
-    whitelist: ["user"]
+    whitelist: ["user", "navbar"]
 }
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)

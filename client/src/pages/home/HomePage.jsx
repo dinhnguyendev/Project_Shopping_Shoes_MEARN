@@ -13,6 +13,7 @@ import axios from 'axios';
 import jwt_decode from 'jwt-decode';
 import { loginSuccess } from '../../redux/userSlice';
 import { refeshAxiosJWT } from '../../refeshAxiosJWT';
+import { getnavbarcategory } from '../../redux/apiRequest';
 
 function Home() {
     const navigate = useNavigate();
@@ -26,6 +27,9 @@ function Home() {
             console.log(user.tokensign);
         }
     }, [])
+    useEffect(() => {
+        getnavbarcategory(dispatch, navigate);
+    }, []);
     return (
         <div className='home__page'>
             <Slider />

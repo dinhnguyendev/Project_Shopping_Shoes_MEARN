@@ -5,16 +5,57 @@ import logo from '../../assets/image/sport.svg';
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../redux/apiRequest";
 import { refeshAxiosJWT } from "../../refeshAxiosJWT";
-import { logoutSuccess } from "../../redux/userSlice";
+import { loginSuccess, logoutSuccess } from "../../redux/userSlice";
+import axios from "axios";
+import jwtDecode from "jwt-decode";
+let axiosJWT = axios.create();
 function Header() {
     const user = useSelector(state => state.user.login?.currentUser);
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const token = user?.tokensign;
+    console.log('asdasda: ' + token);
     const id = user?._id;
+    console.log((user));
+    const refeshtoken = async () => {
+        try {
+            const res = await axios.post("http://localhost:5000/user/refesh", {
+                withCredentials: true
+            });
+            return res.data;
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    axiosJWT.interceptors.request.use(
+        async (config) => {
+
+            let date = new Date();
+            const decodeToken = jwtDecode(user?.tokensign);
+            if (decodeToken.exp < date.getTime() / 1000) {
+                const data = await refeshtoken();
+                const refeshUser = {
+                    ...user,
+                    tokensign: refesh.tokensign
+                };
+                dispatch(loginSuccess(refeshUser));
+                config.headers["token"] = "Bearer " + refesh.tokensign;
+            };
+            return config;
+        },
+        (error) => {
+            return Promise.reject(error);
+        }
+    );
+
     let jwtToken = refeshAxiosJWT(user, dispatch, logoutSuccess);
     const handleLogout = () => {
-        logout(dispatch, id, navigate, token, jwtToken);
+        const navigate = useNavigate();
+        const dispatch = useDispatch();
+        const tokens = user?.tokensign;
+        console.log('asdasda: ' + tokens);
+        const id = user?._id;
+        logout(dispatch, id, navigate, tokens, axiosJWT);
     }
 
     return (
@@ -193,7 +234,7 @@ function Header() {
                                 <li className="header__list__item">
                                     <div className="header__list__link">hướng dẫn mua hàng</div>
                                 </li>
-                                <Link to="/collection" className="header__list__link__to">
+                                <Link to="/collection/all" className="header__list__link__to">
                                     <div className="header__list__link">tất cả sản phẩm <i class="fal fa-chevron-down icon__down"></i></div>
                                     <ul className="header__list__all">
                                         <li className="header__list__product">
