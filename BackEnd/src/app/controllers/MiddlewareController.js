@@ -1,7 +1,5 @@
 const jwt = require('jsonwebtoken');
 
-
-
 const MiddlewareController = {
     verifiToken: (req, res, next) => {
         const token = req.headers.token;

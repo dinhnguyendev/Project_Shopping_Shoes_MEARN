@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const Customers = require('../models/Customers');
+const Address = require('../models/Address');
 
 
 class UserController {
@@ -16,7 +17,6 @@ class UserController {
                 name,
                 password: hashed
             })
-
             res.status(200).json(newCustomer)
         } catch (error) {
             res.status(500).json(error);
@@ -41,7 +41,7 @@ class UserController {
                     id: customer.id,
                     admin: customer.admin
                 }, process.env.JWT_ACCESS_TOKEN,
-                    { expiresIn: "55s" }
+                    { expiresIn: "365d" }
                 );
                 const refeshToken = jwt.sign({
                     id: customer.id,
@@ -49,7 +49,6 @@ class UserController {
                 }, process.env.JWT_REFESH_TOKEN,
                     { expiresIn: "10d" }
                 );
-
                 // save cookie
                 res.cookie("refeshToken", refeshToken, {
                     httpOnly: true,
@@ -97,6 +96,85 @@ class UserController {
     async logout(req, res) {
         res.clearCookie("refeshToken");
         res.status(200).json("logout is successfully");
+    }
+    async address(req, res) {
+        const { userid, name, phone, provincesAddress, cityAddress, warsAddress, detailsAddress } = req.body.address;
+        const add = await Address.findOne({ userid });
+        // console.log(add);
+        try {
+            if (add) {
+                add.address.push({
+                    name,
+                    phone,
+                    provinces: provincesAddress,
+                    citys: cityAddress,
+                    wars: warsAddress,
+                    details: detailsAddress
+                })
+                await add.save();
+                return res.status(200).json(add);
+            } else {
+                const addAddress = await Address.create({
+                    userid,
+                    address: [
+                        {
+                            name,
+                            phone,
+                            provinces: provincesAddress,
+                            citys: cityAddress,
+                            wars: warsAddress,
+                            details: detailsAddress
+                        }
+                    ]
+                })
+                return res.status(200).json(addAddress)
+            }
+        } catch (error) {
+            res.status(500).json("loi server")
+        }
+    }
+    getAddressAll(req, res) {
+        const { userid } = req.params;
+        // console.log(userid);
+        Address.findOne({ userid })
+            .then(data => res.status(200).json(data))
+            .catch(err => res.status(500).json("loi server"))
+    }
+    deleteAddress(req, res) {
+        const { userid, idAddress } = req.body;
+        Address.updateOne({ userid }, {
+            $pull: {
+                address: { _id: idAddress }
+            }
+        })
+            .then(data => res.status(200).json(data))
+            .catch(err => res.status(500).json("loi server"))
+    }
+    checked(req, res) {
+        const { userid, idAddress } = req.body;
+        Address.updateOne({ userid, "address._id": idAddress }, {
+            $set: {
+                "address.$.active": true
+            }
+        })
+            .then(data => res.status(200).json(data))
+            .catch(err => res.status(500).json("loi server"))
+    }
+    unchecked(req, res) {
+        const { userid } = req.body;
+        Address.updateOne({ userid }, {
+            $set: {
+                "address.$[].active": false
+            }
+        })
+            .then(data => res.status(200).json(data))
+            .catch(err => res.status(500).json("loi server"))
+    }
+    getchecked(req, res) {
+        const { userid } = req.body;
+        Address.findOne({ userid }, { address: { $elemMatch: { active: true } } })
+            .then(data => res.status(200).json(data))
+            .catch(err => res.status(500).json("loi server"))
     }
 }
 module.exports = new UserController;

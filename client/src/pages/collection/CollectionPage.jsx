@@ -14,7 +14,7 @@ function Collections() {
     console.log("slug:" + slug)
     useEffect(() => {
         getproducts(dispatch, navigate, slug);
-
+        getnavbarcategory(dispatch, navigate);
     }, []);
 
     return (

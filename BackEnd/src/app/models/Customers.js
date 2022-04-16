@@ -21,7 +21,36 @@ const Customers = new Schema({
     admin: {
         type: Boolean,
         default: false
-    }
+    },
+    address: [
+        {
+            name: {
+                type: String,
+                default: ''
+            },
+            phone: {
+                type: String,
+                default: ''
+            },
+            provinces: {
+                type: String,
+                default: ''
+            },
+            citys: {
+                type: String,
+                default: ''
+            },
+            wars: {
+                type: String,
+                default: ''
+            },
+            details: {
+                type: String,
+                default: ''
+            }
+
+        }
+    ]
 
 }, {
     collection: 'customers',

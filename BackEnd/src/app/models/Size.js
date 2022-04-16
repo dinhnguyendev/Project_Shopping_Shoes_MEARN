@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const Size = new Schema({
-    name: { type: Array, require: true }
+    name: { type: Number, require: true }
 }, {
     collection: 'size',
     timestamps: true

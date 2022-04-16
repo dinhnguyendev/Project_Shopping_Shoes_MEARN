@@ -27,7 +27,7 @@ function Navbar() {
                         </div>
                     </div>
                     <div class="home__navbar__list">
-                        {navbar.map((categorys) => (
+                        {navbar?.map((categorys) => (
                             <Link onClick={handleNavbar} to={`/collection/${categorys?._id}`} key={categorys?._id} class="home__navbar__list__item">{categorys?.name}</Link>
                         ))}
                         {/* <a href="" class="home__navbar__list__item">giày cỏ tự nhiên</a>

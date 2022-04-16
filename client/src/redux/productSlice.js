@@ -14,7 +14,7 @@ const productSlice = createSlice({
         },
         addproducts: {
             isFetching: false,
-            addproducts: false,
+            addproducts: null,
             error: false
         }
     },
@@ -51,17 +51,17 @@ const productSlice = createSlice({
         },
         addproductsStart: (state) => {
             state.addproducts.isFetching = true;
-            state.addproducts.addproducts = false;
+            state.addproducts.addproducts = null;
             state.addproducts.error = false;
         },
-        addproductsSuccess: (state) => {
+        addproductsSuccess: (state, action) => {
             state.addproducts.isFetching = false;
-            state.addproducts.addproducts = true;
+            state.addproducts.addproducts = action.payload;
             state.addproducts.error = false;
         },
         addproductsFailed: (state) => {
             state.addproducts.isFetching = false;
-            state.addproducts.addproducts = false;
+            state.addproducts.addproducts = null;
             state.addproducts.error = true;
         }
     }

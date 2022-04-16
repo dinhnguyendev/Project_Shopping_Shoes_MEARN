@@ -790,4 +790,21 @@ sup{
     background-color: #ffffff;
     margin-top: 20px;
 }
-
+.container__error{
+    padding: 10px 10px;
+}
+.barg{
+    background-color: #FFF4F4;
+}
+.container__error__title{
+    margin-top: 10px;
+    color: red;
+    font-size: 15px;
+    margin-left: 100px;
+    padding: 5px 0px;
+    font-weight: 300;
+    display: none;
+}
+.show{
+    display: block;
+}

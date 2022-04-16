@@ -27,9 +27,7 @@ function Home() {
             console.log(user.tokensign);
         }
     }, [])
-    useEffect(() => {
-        getnavbarcategory(dispatch, navigate);
-    }, []);
+
     return (
         <div className='home__page'>
             <Slider />

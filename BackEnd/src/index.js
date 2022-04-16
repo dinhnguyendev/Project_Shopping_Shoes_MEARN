@@ -9,7 +9,7 @@ const jwt = require('jsonwebtoken');
 const route = require('./routes');
 const db = require('./config/database/index');
 const PORT = 5000;
-
+var path = require('path');
 db.connect();
 dotenv.config();
 //app use
@@ -21,6 +21,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(cors());
 app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, 'uploads/')));
 route(app);
 
 

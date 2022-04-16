@@ -2,8 +2,7 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { getdetailsproducts } from "../../../../redux/apiRequest";
-
+import { getdetailsproducts, postToCart, postToCart1 } from "../../../../redux/apiRequest";
 import './details.css';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -12,7 +11,11 @@ import './sliderimage.css';
 function Details() {
     const [image, setImage] = useState('');
     const [number, setNumber] = useState(1);
+    const [color, setColor] = useState('');
+    const [size, setSize] = useState('');
     const products = useSelector(state => state.products.productdetails?.productdetail);
+    const users = useSelector(state => state.user.login?.currentUser);
+    // console.log(users);
     //xu ly hover vao gan gia tri cho image big
     useEffect(() => {
         const imageElement = document.querySelector('.container-details-image-img');
@@ -22,7 +25,6 @@ function Details() {
                 setImage(imageDetailsElement[i].src);
             }
         }
-
     }, []);
 
     //xu ly add,sub input so luong 
@@ -33,8 +35,19 @@ function Details() {
         setNumber(Number(number) - 1);
     }
     const handleSetNumberAdd = () => {
-
         setNumber(Number(number) + 1);
+        if (number > 99) {
+            setNumber(100);
+        }
+    }
+    function handleNumber(e) {
+        if (e.target.value < 1) {
+            setNumber(1);
+        } else if (e.target.value > 100) {
+            setNumber(100);
+        } else {
+            setNumber(e.target.value);
+        }
     }
     //xy ly click vao button color hien border,icon,background ra
     useEffect(() => {
@@ -53,6 +66,7 @@ function Details() {
                 for (let i = 0; i < elementColor.length; i++) {
                     elementColor[i].classList.remove('click1');
                 }
+                setColor(e.currentTarget.id);
                 e.currentTarget.classList.add('click1');
                 e.currentTarget.children[0].classList.add('click');
                 e.currentTarget.children[1].classList.add('click');
@@ -78,6 +92,7 @@ function Details() {
                 for (let i = 0; i < elementSize.length; i++) {
                     elementSize[i].classList.remove('click1');
                 }
+                setSize(e.currentTarget.id);
                 e.currentTarget.classList.add('click1');
                 e.currentTarget.children[0].classList.add('click');
                 e.currentTarget.children[1].classList.add('click');
@@ -91,6 +106,49 @@ function Details() {
         slidesToShow: 4,
         slidesToScroll: 1
     };
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const handleSubmitForm = (e) => {
+        e.preventDefault();
+        const productId = products._id;
+        const userid = users._id;
+        const quantity = number;
+        const price = products.price_now;
+        // console.log("submit");
+        // console.log("color : " + color);
+        // console.log("number : " + number);
+        // console.log("id : " + productId);
+        // console.log("iduser : " + userid);
+        // console.log("size : " + size);
+        // console.log("price : " + price);
+        const errorElement = document.querySelector('.container__error');
+        const errorTiltleElement = document.querySelector('.container__error__title');
+        if (color == '' || size == '') {
+            errorElement.classList.add('barg');
+            errorTiltleElement.classList.add('show');
+        } else {
+            errorElement.classList.remove('barg');
+            errorTiltleElement.classList.remove('show');
+            const postAdd = {
+                userid,
+                productId,
+                color,
+                size,
+                quantity,
+                price
+            };
+            if (e.currentTarget.name == 'submit') {
+                postToCart(dispatch, navigate, postAdd);
+            } else {
+                const showNotification = document.querySelector('.app-chitiet-notifi');
+                showNotification.classList.add('show');
+                setTimeout(() => {
+                    showNotification.classList.remove('show');
+                }, 3000);
+                postToCart1(dispatch, postAdd);
+            }
+        }
+    }
     return (
         <div>
             <div class="app-chitiet">
@@ -171,48 +229,48 @@ function Details() {
                                     </div>
                                     <div class="container-details-sale">50%&nbsp;GIẢM</div>
                                 </div>
-                                <div class="container-details-color">
-                                    <label class="container-details-color-text">MÀU SẮC</label>
-                                    <div class="container-details-color-item">
-                                        <button className="container-details-button-color" onclick="onclickcolor()"
-                                            checked="checked">
-                                            trang
-                                            <i class="fal fa-check container-details-button-focus"
-                                            ></i>
-                                            <div class="container-details-button-color-backg">
-                                            </div>
-                                        </button>
-                                        <button className="container-details-button-color" onclick="onclickcolor()"
-                                            checked="checked">
-                                            den
-                                            <i class="fal fa-check container-details-button-focus"
-                                            ></i>
-                                            <div class="container-details-button-color-backg">
-                                            </div>
-                                        </button>
+                                <div className="container__error">
+                                    <div class="container-details-color">
+                                        <label class="container-details-color-text">MÀU SẮC</label>
+                                        <div class="container-details-color-item">
+                                            <button id='6231f9f3413babb205c4ac17' className="container-details-button-color" onclick="onclickcolor()"
+                                                checked="checked">
+                                                trang
+                                                <i class="fal fa-check container-details-button-focus"
+                                                ></i>
+                                                <div class="container-details-button-color-backg">
+                                                </div>
+                                            </button>
+                                            <button id='6231fa0d413babb205c4ac18' className="container-details-button-color" onclick="onclickcolor()"
+                                                checked="checked">
+                                                den
+                                                <i class="fal fa-check container-details-button-focus"
+                                                ></i>
+                                                <div class="container-details-button-color-backg">
+                                                </div>
+                                            </button>
 
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="container-details-size">
-                                    <label class="container-details-size-text">SIZE</label>
-                                    <div class="container-details-size-item">
-                                        <button class="container-details-button-size" onclick="onclicksize()" checked="checked">
-                                            29
-                                            <i class="fal fa-check container-details-button-checked"
-                                                onclick="event.stopPropagation()"></i>
-                                            <div class="container-details-button-color-checked"
-                                                onclick="event.stopPropagation()"></div>
-                                        </button>
-                                        <button class="container-details-button-size" onclick="onclicksize()" checked="checked">
-                                            30
-                                            <i class="fal fa-check container-details-button-checked"
-                                                onclick="event.stopPropagation()"></i>
-                                            <div class="container-details-button-color-checked"
-                                                onclick="event.stopPropagation()"></div>
-                                        </button>
+                                    <div class="container-details-size">
+                                        <label class="container-details-size-text">SIZE</label>
+                                        <div class="container-details-size-item">
+                                            <button id='6231f9a9413babb205c4ac12' class="container-details-button-size" onclick="onclicksize()" checked="checked">
+                                                29
+                                                <i class="fal fa-check container-details-button-checked"
+                                                    onclick="event.stopPropagation()"></i>
+                                                <div class="container-details-button-color-checked"
+                                                    onclick="event.stopPropagation()"></div>
+                                            </button>
+                                            <button id='6231f9bd413babb205c4ac13' class="container-details-button-size" onclick="onclicksize()" checked="checked">
+                                                30
+                                                <i class="fal fa-check container-details-button-checked"
+                                                    onclick="event.stopPropagation()"></i>
+                                                <div class="container-details-button-color-checked"
+                                                    onclick="event.stopPropagation()"></div>
+                                            </button>
+                                        </div>
                                     </div>
-                                </div>
-                                <form method="POST" action="cart.php?action=add" class="form-submit">
                                     <div class="container-details-quantity">
                                         <div class="container-details-quantity-products">
                                             <div class="container-details-quantity-text">Số Lượng</div>
@@ -222,8 +280,7 @@ function Details() {
                                                         <i class="fal fa-minus container-details-minus-btn" onClick={handleSetNumberSub}></i>
                                                     </div>
                                                     <input type="number" class="container-details-input-text" min="1" max="300"
-                                                        value={number} name="quantity" onChange={(e) => setNumber(e.target.value)} />
-
+                                                        value={number} name="quantity" onChange={e => handleNumber(e)} />
                                                     <div class="container-details-minus-btn-btn">
                                                         <i class="fal fa-plus container-details-minus-btn" onClick={handleSetNumberAdd}></i>
                                                     </div>
@@ -233,20 +290,21 @@ function Details() {
                                             </div>
                                         </div>
                                     </div>
+                                    <div className="container__error__title">Vui lòng chọn Phân loại hàng</div>
+                                </div>
+                                <form action="" method='post'>
                                     <div class="container-details-button-add">
-                                        <button class="container-details-add" name="addsubmit">
+                                        <button onClick={handleSubmitForm} class="container-details-add" name="addsubmit">
                                             <div class="container-details-add-text">
                                                 <i class="fal fa-cart-plus container-details-add-text-icon"></i>Thêm Vào Giỏ
                                                 Hàng
                                             </div>
                                         </button>
                                         <div class="container-details-link">
-                                            <button type="submit" name="submit" class="container-details-button-buy">Mua
+                                            <button onClick={handleSubmitForm} type="submit" name="submit" class="container-details-button-buy">Mua
                                                 Ngay</button>
                                         </div>
-
                                     </div>
-
                                 </form>
                                 <div class="container-details-hr"></div>
                                 <div class="container-details-commit">

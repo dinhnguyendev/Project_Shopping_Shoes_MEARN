@@ -1,7 +1,7 @@
 const Product = require('../models/Product');
 const Category = require('../models/Category');
 const Trademark = require('../models/Trademark');
-const TrademarkDetails = require('../models/TrademarkDetails');
+const TrademarkDetails = require('../models/Brand');
 class CollectionController {
     showall(req, res) {
         // Product.create({
@@ -24,18 +24,27 @@ class CollectionController {
         // .then(data => console.log(data))
         //  .catch(err => console.log(err))
         Product.find({
-
         })
             .populate('category')
             .populate('trademark')
-
+            .populate('trademarkdetails')
             .then(data => res.status(200).json(data))
             .catch(error => res.status(500).json('loi server'));
     }
     showdetails(req, res) {
         const id = req.params.id;
-        console.log(id);
-
+        Product.find({
+            $or: [
+                { category: id },
+                { trademark: id },
+                { trademarkdetails: id },
+            ]
+        })
+            .populate('category')
+            .populate('trademark')
+            .populate('trademarkdetails')
+            .then(data => res.status(200).json(data))
+            .catch(error => res.status(500).json('loi server'));
     }
 }
 module.exports = new CollectionController;

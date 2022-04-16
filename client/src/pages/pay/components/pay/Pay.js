@@ -1,7 +1,39 @@
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { addOrder, checkedAddress } from '../../../../redux/apiRequest';
 import './pay.css';
 function Pay() {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const user = useSelector(state => state.user.login?.currentUser);
+    const product = useSelector(state => state.cart.getcart?.currentCart);
+    const address = useSelector(state => state.pay.checkedAddress?.currentAddress);
+
+    console.log(product);
+    const arrproduct = [];
+    console.log(arrproduct);
+    const handleSubmit = () => {
+        const userid = user._id;
+        // console.log(address);
+        const arr = [];
+        product.map(products => {
+            if (products.active) {
+                arr.push(products);
+            }
+        });
+        if (Object.keys(address).length != 0) {
+            const addressOrder = address.address[0]._id;
+            addOrder(dispatch, navigate, userid, arr, addressOrder, total);
+        } else {
+            alert("Bạn chưa chọn nơi nhận hàng");
+        }
+    }
+    let total = 0;
     return (
+
         <div class="grid-pay">
+
             <div class="container-pay-products">
                 <div class="container-pay-products-big">
                     <div class="container-pay-products-category">
@@ -26,45 +58,56 @@ function Pay() {
                         <div class="container-pay-products-handle-text">Xử lý đơn hàng bởi PAN</div>
                     </div>
 
+                    {product.map(products => {
+                        if (products.active) {
+                            total = total + (products.price * products.quantity);
 
-                    <div class="container-pay-products-margin">
-                        <div class="container-pay-products-details">
-                            <div class="container-pay-products-details-products">
-                                <div class="container-pay-products-details-products-flex">
-                                    <img src="https://techkalzen.com/wp-content/uploads/2020/02/tron-bo-nhung-hinh-anh-dep-buon-mang-tam-trang-suy-tu-1.jpg" alt=""
-                                        class="container-pay-products-details-image" />
-                                    <div class="container-pay-products-details-text">
-                                        nguye ngocd dinh
+                            return (
+                                <div key={products._id} class="container-pay-products-margin">
+                                    <div class="container-pay-products-details">
+                                        <div class="container-pay-products-details-products">
+                                            <div class="container-pay-products-details-products-flex">
+                                                <img src="https://techkalzen.com/wp-content/uploads/2020/02/tron-bo-nhung-hinh-anh-dep-buon-mang-tam-trang-suy-tu-1.jpg" alt=""
+                                                    class="container-pay-products-details-image" />
+                                                <div class="container-pay-products-details-text">
+                                                    {products.productId.name}
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="container-pay-products-details-type">
+                                            Loại:  {products.color.name},{products.size.name}
+                                        </div>
+                                        <div class="container-pay-products-details-price">
+                                            ₫{products.price.toLocaleString('vi', { style: 'currency', currency: 'VND' })}
+                                        </div>
+                                        <div class="container-pay-products-details-number">
+                                            {products.quantity}
+                                        </div>
+                                        <div class="container-pay-products-details-money">
+                                            ₫{(products.price * products.quantity).toLocaleString('vi', { style: 'currency', currency: 'VND' })}
+                                        </div>
                                     </div>
-
                                 </div>
-                            </div>
-                            <div class="container-pay-products-details-type">
-                                Loại:  trang,L
-                            </div>
-                            <div class="container-pay-products-details-price">
-                                ₫99.000
-                            </div>
-                            <div class="container-pay-products-details-number">
-                                55
-                            </div>
-                            <div class="container-pay-products-details-money">
-                                ₫99
-                            </div>
-                        </div>
-                    </div>
+                            )
+                        }
+
+
+
+                    })}
                 </div>
+
                 <div class="container-pay-footer">
                     <div class="container-pay-footer-numer">
                         <div class="container-pay-footer-numer-flex">
                             <div class="container-pay-footer-numer-text">Tổng thanh toán:</div>
-                            <div class="container-pay-footer-numer-money">₫199.000</div>
+                            <div class="container-pay-footer-numer-money">{total.toLocaleString('vi', { style: 'currency', currency: 'VND' })}</div>
                         </div>
                     </div>
                     <div class="container-pay-footer-button">
                         <div class="container-pay-footer-button-text">Nhấn "Đặt hàng" đồng nghĩa với việc bạn
                             đồng ý tuân theo Điều khoản Shopping</div>
-                        <button name="orderss" class="container-pay-footer-btn">Đặt Hàng</button>
+                        <button onClick={handleSubmit} name="orderss" class="container-pay-footer-btn">Đặt Hàng</button>
                     </div>
                 </div>
 

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Category = require('./Category');
 const Trademark = require('./Trademark');
-const TrademarkDetails = require('./TrademarkDetails');
+const TrademarkDetails = require('./Brand');
 const Size = require('./Size');
 const Color = require('./Color');
 const slug = require('mongoose-slug-generator');
@@ -26,21 +26,25 @@ const Product = new Schema({
         ref: 'trademark',
         require: true
     },
-    trademarkderails: {
+    trademarkdetails: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'trademarkdetails',
         require: false
     },
-    color: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'color',
-        require: true
-    },
-    size: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'size',
-        require: true
-    },
+    attributes: [
+        {
+            color: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'color',
+                require: false
+            },
+            size: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'size',
+                require: false
+            }
+        }
+    ],
     imagedetails: {
         type: Array,
         require: false

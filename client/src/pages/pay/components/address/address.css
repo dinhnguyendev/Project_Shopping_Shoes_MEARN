@@ -1,50 +1,54 @@
-.container-pay{
+.container-pay {
     font-size: 16px;
     color: #333;
     background-color: white;
 }
-.container-pay-big{
-  
+
+.container-pay-big {}
+
+.container-pay-address {
+    background-color: #FFFFFF;
+
 }
-.container-pay-address{
-    background-color:#FFFFFF;
-    
-}
-.container-pay-address-space{
+
+.container-pay-address-space {
     height: 3px;
     width: 100%;
     background-position-x: -30px;
     background-size: 116px 3px;
-    background-image: repeating-linear-gradient(
-    45deg,#6fa6d6,#6fa6d6 33px,transparent 0,transparent 41px,#f18d9b 0,#f18d9b 74px,transparent 0,transparent 82px);
+    background-image: repeating-linear-gradient(45deg, #6fa6d6, #6fa6d6 33px, transparent 0, transparent 41px, #f18d9b 0, #f18d9b 74px, transparent 0, transparent 82px);
 }
-.container-pay-address-fex{
+
+.container-pay-address-fex {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 20px 24px 0px 24px;
-    
+
 }
-.container-pay-address-heading{
+
+.container-pay-address-heading {
     display: flex;
     align-items: center;
 }
-.container-pay-address-heading-icon{
+
+.container-pay-address-heading-icon {
     margin-right: 5px;
 }
-.container-pay-address-heading-text{
+
+.container-pay-address-heading-text {
     font-size: 18px;
     color: #ED4D2D;
     text-transform: capitalize;
 }
-.container-pay-address-button-add{
-    
-}
-.container-pay-address-button-add-btn{
+
+.container-pay-address-button-add {}
+
+.container-pay-address-button-add-btn {
     display: flex;
     align-items: center;
     background-color: #FFFFFF;
-    border: 1px solid rgba(0,0,0,.09);
+    border: 1px solid rgba(0, 0, 0, .09);
     box-shadow: 0 1px 1px 0 rgb(0 0 0 / 3%);
     border-radius: 2px;
     padding: 10px 30px;
@@ -54,41 +58,60 @@
     text-transform: capitalize;
     font-weight: 500;
 }
-.container-pay-address-button-add-btn:hover{
-    background: rgba(0,0,0,.02);
-    border-color: rgba(0,0,0,.09);
+
+.container-pay-address-button-add-btn:hover {
+    background: rgba(0, 0, 0, .02);
+    border-color: rgba(0, 0, 0, .09);
 }
-.container-pay-address-button-add-icon{
+
+.container-pay-address-button-add-icon {
     padding-right: 10px;
 }
-.container-pay-address-button-add-text{
 
-}
-.container-pay-address-list{
+.container-pay-address-button-add-text {}
 
-}
-.container-pay-address-list-big{
+.container-pay-address-list {}
+
+.container-pay-address-list-big {
     padding: 20px 0px;
 }
-.container-pay-address-list-item{
+
+.container-pay-address-list-item {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     padding: 9px 24px;
 }
-.container-pay-address-list-input{
+
+.container-pay-address-list-item__flex {
+    display: flex;
+    align-items: center;
+
+}
+
+.container-pay-address-list-input {
     margin-right: 10px;
 }
-.container-pay-address-list-input-check{
-    
+
+.container-pay-address-list-input-check {
+
     position: relative;
     width: 16px;
     height: 16px;
-  
+
 }
-.container-pay-address-list-input-check::before{
-     position: absolute;
-    right: -6px; 
-    top: -1px; 
+
+.icon__delete__icon {
+    color: red;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 2px 5px;
+}
+
+.container-pay-address-list-input-check::before {
+    position: absolute;
+    right: -6px;
+    top: -1px;
     content: "";
     display: inline-block;
     vertical-align: bottom;
@@ -101,106 +124,125 @@
     border-color: gray;
     background-color: #ffffff;
 }
+
 .container-pay-address-list-input-check:checked::before {
     background: radial-gradient(#ffffff 0%, #ffffff 40%, #EE4D2D 50%, #EE4D2D);
     border-color: #ED4D2D;
-  }
+}
 
 
-.container-pay-address-list-name{
+.container-pay-address-list-name {
     margin-left: 15px;
 }
-.container-pay-address-list-name-customers{
-    
-}
-.container-pay-address-list-address{
+
+.container-pay-address-list-name-customers {}
+
+.container-pay-address-list-address {
     margin-left: 20px;
 }
-.container-pay-products{
+
+.container-pay-products {
     font-size: 16px;
     color: #333;
-    
+
     margin-top: 12px;
 
 }
-.container-pay-products-big{
+
+.container-pay-products-big {
     background-color: #FFFFFF;
 }
-.container-pay-products-category{
+
+.container-pay-products-category {
     display: flex;
     align-items: center;
     padding: 24px 30px 24px 30px;
-    
+
 }
-.container-pay-products-category-products{
+
+.container-pay-products-category-products {
     flex: 4;
 }
-.container-pay-products-category-space{
+
+.container-pay-products-category-space {
     flex: 2;
 }
-.container-pay-products-category-price{
+
+.container-pay-products-category-price {
     flex: 1;
     color: #C1BBBB;
     text-align: center;
 }
-.container-pay-products-category-number{
+
+.container-pay-products-category-number {
     flex: 1;
     color: #C1BBBB;
     text-align: center;
 }
-.container-pay-products-category-money{
+
+.container-pay-products-category-money {
     flex: 2;
     text-align: right;
     color: #C1BBBB;
 }
-.container-pay-products-handle{
+
+.container-pay-products-handle {
     display: flex;
     align-items: center;
     padding: 0px 30px;
 }
-.container-pay-products-handle-icon{
+
+.container-pay-products-handle-icon {
     height: 15px;
     margin-right: 10px;
 }
-.container-pay-products-handle-text{
+
+.container-pay-products-handle-text {
     color: #8B7575;
 }
-.container-pay-products-margin{
+
+.container-pay-products-margin {
     margin-top: 12px;
 }
-.container-pay-products-details{
+
+.container-pay-products-details {
     display: flex;
     align-items: center;
     font-size: 15px;
     padding: 10px 30px;
 
 }
-.container-pay-products-details-products{
+
+.container-pay-products-details-products {
     flex: 4;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
-   
+
     line-height: 19px;
 }
-.container-pay-products-details-products-flex{
+
+.container-pay-products-details-products-flex {
     display: flex;
     align-items: center;
     text-overflow: ellipsis;
     overflow: hidden;
 }
-.container-pay-products-details-image{
+
+.container-pay-products-details-image {
     width: 45px;
     height: 45px;
 }
-.container-pay-products-details-text{
+
+.container-pay-products-details-text {
     padding: 0px 15px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-   
+
 }
-.container-pay-products-details-type{
+
+.container-pay-products-details-type {
     flex: 2;
     color: #C1BBBB;
     white-space: nowrap;
@@ -210,56 +252,65 @@
     padding-left: 13px;
     font-size: 13px;
 }
-.container-pay-products-details-price{
+
+.container-pay-products-details-price {
     flex: 1;
     white-space: nowrap;
     text-align: center;
 }
-.container-pay-products-details-number{
+
+.container-pay-products-details-number {
     flex: 1;
     text-align: center;
 }
-.container-pay-products-details-money{
+
+.container-pay-products-details-money {
     flex: 2;
     text-align: right;
 }
-.container-pay-footer{
+
+.container-pay-footer {
     padding-top: 30px;
     background-color: #FFFEFB;
     margin-top: 12px;
 }
-.container-pay-footer-numer{
 
-}
-.container-pay-footer-numer-flex{
+.container-pay-footer-numer {}
+
+.container-pay-footer-numer-flex {
     display: flex;
     align-items: center;
     justify-content: right;
-    
+
 }
-.container-pay-footer-numer-text{
+
+.container-pay-footer-numer-text {
     color: #8B7575;
 }
-.container-pay-footer-numer-money{
+
+.container-pay-footer-numer-money {
     padding: 0px 30px 0px 10px;
     font-size: 30px;
-    
+
     color: #ED4D2D;
 }
-.container-pay-footer-button{
+
+.container-pay-footer-button {
     padding: 40px 30px;
-    border-top: 1px dashed rgba(0,0,0,.09);
+    border-top: 1px dashed rgba(0, 0, 0, .09);
     margin-top: 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
-.container-pay-footer-button-text{
+
+.container-pay-footer-button-text {
     white-space: nowrap;
     color: #8B7575;
     font-size: 14px;
 }
-.container-pay-footer-btn{
+
+.container-pay-footer-btn {
     background: #ee4d2d;
     color: #fff;
     padding: 10px 60px;
@@ -267,6 +318,194 @@
     border-radius: 2px;
     cursor: pointer;
 }
-.container-pay-footer-btn:hover{
+
+.container-pay-footer-btn:hover {
     background-color: #f05c3e;
+}
+
+.modal-app {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.1);
+    display: none;
+    z-index: 3;
+
+
+}
+
+.app-pay {
+    position: relative;
+    width: 610px;
+    height: 500px;
+    background-color: #ffffff;
+    animation: hienlen ease 0.1s;
+    box-shadow: 0 1px 1px 0 rgb(0 0 0 / 5%);
+    border-radius: 3px;
+}
+
+.open {
+    display: flex;
+}
+
+.app-pay-big {
+
+    padding: 30px;
+}
+
+.app-pay-heading {
+    padding-bottom: 20px;
+    font-weight: 400;
+    font-size: 18px;
+    color: #222;
+    text-transform: capitalize;
+}
+
+.app-pay-information {
+    display: flex;
+    align-items: center;
+    margin: 6px 0px 15px 0px;
+}
+
+.app-pay-information-name {
+    flex: 1;
+    background-color: transparent;
+    padding: 10px;
+    height: 38px;
+    outline: none;
+    border: 1px solid #DBDBDB;
+    box-shadow: 0 0 4px 0 rgb(0 0 0 / 14%);
+    border-radius: 2px;
+    margin-right: 5px;
+}
+
+.app-pay-information-name:focus {
+    border: 1px solid rgba(0, 0, 0, .54);
+
+}
+
+.app-pay-information-phone {
+    flex: 1;
+    background-color: transparent;
+    padding: 10px;
+    height: 38px;
+    outline: none;
+    border: 1px solid #DBDBDB;
+    box-shadow: 0 0 4px 0 rgb(0 0 0 / 14%);
+    border-radius: 2px;
+    margin-left: 5px;
+}
+
+.app-pay-information-phone:focus {
+    border: 1px solid rgba(0, 0, 0, .54);
+}
+
+.app-pay-address {
+    width: 100%;
+}
+
+.app-pay-address-flex {
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.app-pay-address-city {
+    position: relative;
+    flex: 1;
+    outline: none;
+    border: 1px solid #DBDBDB;
+    box-shadow: 0 0 4px 0 rgb(0 0 0 / 14%);
+    border-radius: 2px;
+    background-color: transparent;
+    cursor: pointer;
+    padding: 8px 5px;
+    margin: 2px;
+
+}
+
+.app-pay-address-city:focus {
+    border: 1px solid rgba(0, 0, 0, .54);
+
+}
+
+.app-pay-address-district {
+    flex: 1;
+    padding: 8px;
+    outline: none;
+    border: 1px solid #DBDBDB;
+    box-shadow: 0 0 4px 0 rgb(0 0 0 / 14%);
+    border-radius: 2px;
+    background-color: transparent;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.app-pay-address-district:focus {
+    border: 1px solid rgba(0, 0, 0, .54);
+
+}
+
+.app-pay-address-details {
+    width: 100%;
+}
+
+.app-pay-address-details-check {
+    width: 100%;
+    background-color: transparent;
+    padding: 10px;
+    height: 50px;
+    outline: none;
+    border: 1px solid #DBDBDB;
+    box-shadow: 0 0 4px 0 rgb(0 0 0 / 14%);
+    border-radius: 2px;
+    margin-top: 15px;
+}
+
+.app-pay-address-details-check:focus {
+    border: 1px solid rgba(0, 0, 0, .54);
+    border: 1px solid rgba(0, 0, 0, .54);
+    border: 1px solid rgba(0, 0, 0, .54);
+}
+
+.app-pay-button {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+
+}
+
+.app-pay-btn-back {
+    padding: 10px 46px;
+    border-radius: 2px;
+    border: none;
+    color: #555555;
+    cursor: pointer;
+    text-transform: capitalize;
+}
+
+.app-pay-btn-back:hover {
+    background-color: #F8F8F8;
+}
+
+.app-pay-btn-submit {
+    padding: 10px 29px;
+    border-radius: 2px;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    background-color: #EE4D2D;
+    text-transform: capitalize;
+    margin-left: 15px;
+}
+
+.app-pay-btn-submit:hover {
+    background-color: #f95941;
 }

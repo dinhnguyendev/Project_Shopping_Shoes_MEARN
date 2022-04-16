@@ -9,6 +9,12 @@ import Loading from './components/loading/Loading';
 import AdminPage from './pages/Admin/AdminPage';
 import SizePage from './pages/size/SizePage';
 import OutletPages from './components/outlet/OutletPages';
+import SuccessPage from './pages/success/SuccessPage';
+import ProductsPage from './pages/Admin/components/products/ProductsPage';
+import AddProduct from './pages/Admin/components/products/components/addproduct/AddProduct';
+import OrderPage from './pages/Admin/components/order/OrderPage';
+import OrderAdmin from './pages/Admin/components/order/components/order/Order';
+import OrderDetails from './pages/Admin/components/order/components/orderdetails/OrderDetails';
 const PayPage = React.lazy(() => import('./pages/pay/PayPage'));
 const Profile = React.lazy(() => import('./pages/account/components/profile/Profile'));
 const CartPage = React.lazy(() => import('./pages/cart/CartPage'));
@@ -48,9 +54,18 @@ function App() {
               <Route path='/pay' element={<PayPage />} />
               <Route path='products/:slug' element={<DetailsPage />} />
               <Route path='/huong-dan-chon-size-giay' element={<SizePage />} />
+              <Route path='/success' element={<SuccessPage />} />
               <Route path='/' element={<HomePage />} />
             </Route>
-            <Route path='/admin' element={<AdminPage />} />
+            <Route path='/admin' element={<AdminPage />} >
+              <Route path='product' element={<ProductsPage />}>
+                <Route path='add' element={<AddProduct />} />
+              </Route>
+              <Route path='order' element={<OrderPage />}>
+                <Route path='all' element={<OrderAdmin />} />
+                <Route path='details' element={<OrderDetails />} />
+              </Route>
+            </Route>
           </Routes>
 
         </BrowserRouter>
