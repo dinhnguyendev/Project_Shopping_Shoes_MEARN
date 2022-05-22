@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { getdetailsproducts, postToCart, postToCart1 } from "../../../../redux/apiRequest";
+import { getdetailsproducts, getToCart, postToCart, postToCart1 } from "../../../../redux/apiRequest";
 import './details.css';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -15,7 +15,11 @@ function Details() {
     const [size, setSize] = useState('');
     const products = useSelector(state => state.products.productdetails?.productdetail);
     const users = useSelector(state => state.user.login?.currentUser);
-    // console.log(users);
+    console.log(products);
+    console.log(products);
+    console.log(products);
+    console.log(products);
+    console.log(products);
     //xu ly hover vao gan gia tri cho image big
     useEffect(() => {
         const imageElement = document.querySelector('.container-details-image-img');
@@ -50,31 +54,26 @@ function Details() {
         }
     }
     //xy ly click vao button color hien border,icon,background ra
-    useEffect(() => {
+    const handleClickButonColor = (e) => {
         const elementColor = document.querySelectorAll('.container-details-button-color');
         const elementIcon = document.querySelectorAll('.container-details-button-focus');
         const elementBrg = document.querySelectorAll('.container-details-button-color-backg');
-
-        for (let i = 0; i < elementColor.length; i++) {
-            elementColor[i].onclick = (e) => {
-                for (let i = 0; i < elementIcon.length; i++) {
-                    elementIcon[i].classList.remove('click');
-                }
-                for (let i = 0; i < elementBrg.length; i++) {
-                    elementBrg[i].classList.remove('click');
-                }
-                for (let i = 0; i < elementColor.length; i++) {
-                    elementColor[i].classList.remove('click1');
-                }
-                setColor(e.currentTarget.id);
-                e.currentTarget.classList.add('click1');
-                e.currentTarget.children[0].classList.add('click');
-                e.currentTarget.children[1].classList.add('click');
-            }
+        for (let i = 0; i < elementIcon.length; i++) {
+            elementIcon[i].classList.remove('click');
         }
-    }, []);
+        for (let i = 0; i < elementBrg.length; i++) {
+            elementBrg[i].classList.remove('click');
+        }
+        for (let i = 0; i < elementColor.length; i++) {
+            elementColor[i].classList.remove('click1');
+        }
+        setColor(e.target.id);
+        e.target.classList.add('click1');
+        e.target.children[0].classList.add('click');
+        e.target.children[1].classList.add('click');
+    }
     //xy ly click vao button size hien border,icon,background ra
-    useEffect(() => {
+    const handleClickButonSize = (e) => {
         const elementSize = document.querySelectorAll('.container-details-button-size');
         const elementIconSize = document.querySelectorAll('.container-details-button-checked');
         const elementBrgSize = document.querySelectorAll('.container-details-button-color-checked');
@@ -92,13 +91,14 @@ function Details() {
                 for (let i = 0; i < elementSize.length; i++) {
                     elementSize[i].classList.remove('click1');
                 }
-                setSize(e.currentTarget.id);
-                e.currentTarget.classList.add('click1');
-                e.currentTarget.children[0].classList.add('click');
-                e.currentTarget.children[1].classList.add('click');
+                setSize(e.target.id);
+                e.target.classList.add('click1');
+                e.target.children[0].classList.add('click');
+                e.target.children[1].classList.add('click');
             }
         }
-    }, [])
+    }
+
     let settings = {
         dots: false,
         infinite: true,
@@ -114,13 +114,6 @@ function Details() {
         const userid = users._id;
         const quantity = number;
         const price = products.price_now;
-        // console.log("submit");
-        // console.log("color : " + color);
-        // console.log("number : " + number);
-        // console.log("id : " + productId);
-        // console.log("iduser : " + userid);
-        // console.log("size : " + size);
-        // console.log("price : " + price);
         const errorElement = document.querySelector('.container__error');
         const errorTiltleElement = document.querySelector('.container__error__title');
         if (color == '' || size == '') {
@@ -139,6 +132,7 @@ function Details() {
             };
             if (e.currentTarget.name == 'submit') {
                 postToCart(dispatch, navigate, postAdd);
+                getToCart(dispatch, userid);
             } else {
                 const showNotification = document.querySelector('.app-chitiet-notifi');
                 showNotification.classList.add('show');
@@ -146,6 +140,7 @@ function Details() {
                     showNotification.classList.remove('show');
                 }, 3000);
                 postToCart1(dispatch, postAdd);
+                getToCart(dispatch, userid);
             }
         }
     }
@@ -157,19 +152,19 @@ function Details() {
                         <div class="container-details-big">
                             <div class="container-details-big-image">
                                 <div class="container-details-image">
-                                    <img src={image}
+                                    <img src={products?.image && `http://localhost:5000/${products.image}`}
                                         alt="" id="container-details-image-img-id" className="container-details-image-img" />
                                 </div>
                                 <div class="container-details-imge-differenr">
                                     <div class="container-slider-big">
                                         <div className="sliderimage">
                                             <Slider {...settings}>
-                                                <img src="https://product.hstatic.net/1000061481/product/8ae72e95ffdf427aa7079924226db2ff_74154bfeaa234fec8efd70280c988c54_1024x1024.jpeg" alt="" className="image__customer" />
-                                                <img src="https://product.hstatic.net/1000061481/product/_mg_0508_14c01e0007324ffaa9ef7ce69333abcf_1024x1024.jpg" alt="" className="image__customer" />
-                                                <img src="https://product.hstatic.net/1000061481/product/_mg_0511_a1345aa48e9c407f8fb4598d3ec5af32_1024x1024.jpg" alt="" className="image__customer" />
-                                                <img src="https://product.hstatic.net/1000061481/product/8ae72e95ffdf427aa7079924226db2ff_74154bfeaa234fec8efd70280c988c54_1024x1024.jpeg" alt="" className="image__customer" />
-                                                <img src="https://product.hstatic.net/1000061481/product/_mg_0508_14c01e0007324ffaa9ef7ce69333abcf_1024x1024.jpg" alt="" className="image__customer" />
-                                                <img src="https://product.hstatic.net/1000061481/product/_mg_0511_a1345aa48e9c407f8fb4598d3ec5af32_1024x1024.jpg" alt="" className="image__customer" />
+                                                {products?.imagedetails && products.imagedetails.map(image => {
+                                                    return (
+                                                        <img src={`http://localhost:5000/${image}`} alt="" className="image__customer" />
+                                                    )
+                                                })}
+                                                <img src="https://file.hstatic.net/1000061481/file/bang_tinh_size_giay_nike-01_04e8dc7953e1405d987f06e46c70ba81_116e6ba1a9344c1ead46290aeffcc961_1024x1024.jpg" alt="" className="image__customer" />
                                             </Slider>
                                         </div>
                                     </div>
@@ -216,7 +211,7 @@ function Details() {
                                             <sup>₫</sup>
                                         </div>
                                         <div class="container-details-old-price-number">
-                                            asdsad
+                                            {products?.price_last.toLocaleString('en-US', { style: 'currency', currency: 'VND' })}
                                         </div>
                                     </div>
                                     <div class="container-details-new-price">
@@ -224,51 +219,45 @@ function Details() {
                                             <sup>₫</sup>
                                         </div>
                                         <div class="container-details-new-price-number">
-                                            asd
+                                            {products?.price_now.toLocaleString('en-US', { style: 'currency', currency: 'VND' })}
                                         </div>
                                     </div>
-                                    <div class="container-details-sale">50%&nbsp;GIẢM</div>
+                                    <div class="container-details-sale">{100 - ((products?.price_now * 100) / products?.price_last).toFixed(0)}%&nbsp;GIẢM</div>
                                 </div>
                                 <div className="container__error">
                                     <div class="container-details-color">
                                         <label class="container-details-color-text">MÀU SẮC</label>
                                         <div class="container-details-color-item">
-                                            <button id='6231f9f3413babb205c4ac17' className="container-details-button-color" onclick="onclickcolor()"
-                                                checked="checked">
-                                                trang
-                                                <i class="fal fa-check container-details-button-focus"
-                                                ></i>
-                                                <div class="container-details-button-color-backg">
-                                                </div>
-                                            </button>
-                                            <button id='6231fa0d413babb205c4ac18' className="container-details-button-color" onclick="onclickcolor()"
-                                                checked="checked">
-                                                den
-                                                <i class="fal fa-check container-details-button-focus"
-                                                ></i>
-                                                <div class="container-details-button-color-backg">
-                                                </div>
-                                            </button>
-
+                                            {products?.attributes.map(product => {
+                                                return (
+                                                    <button id={product.color._id} className="container-details-button-color"
+                                                        onClick={handleClickButonColor}
+                                                        checked="checked">
+                                                        {product.color.name}
+                                                        <i class="fal fa-check container-details-button-focus"
+                                                        ></i>
+                                                        <div class="container-details-button-color-backg">
+                                                        </div>
+                                                    </button>
+                                                )
+                                            })}
                                         </div>
                                     </div>
                                     <div class="container-details-size">
                                         <label class="container-details-size-text">SIZE</label>
                                         <div class="container-details-size-item">
-                                            <button id='6231f9a9413babb205c4ac12' class="container-details-button-size" onclick="onclicksize()" checked="checked">
-                                                29
-                                                <i class="fal fa-check container-details-button-checked"
-                                                    onclick="event.stopPropagation()"></i>
-                                                <div class="container-details-button-color-checked"
-                                                    onclick="event.stopPropagation()"></div>
-                                            </button>
-                                            <button id='6231f9bd413babb205c4ac13' class="container-details-button-size" onclick="onclicksize()" checked="checked">
-                                                30
-                                                <i class="fal fa-check container-details-button-checked"
-                                                    onclick="event.stopPropagation()"></i>
-                                                <div class="container-details-button-color-checked"
-                                                    onclick="event.stopPropagation()"></div>
-                                            </button>
+                                            {products?.attributes.map(product => {
+                                                return (
+                                                    <button id={product.size._id} class="container-details-button-size" onClick={handleClickButonSize} checked="checked">
+                                                        {product.size.name}
+
+                                                        <i class="fal fa-check container-details-button-checked"
+                                                            onclick="event.stopPropagation()"></i>
+                                                        <div class="container-details-button-color-checked"
+                                                            onclick="event.stopPropagation()"></div>
+                                                    </button>
+                                                )
+                                            })}
                                         </div>
                                     </div>
                                     <div class="container-details-quantity">
@@ -285,7 +274,7 @@ function Details() {
                                                         <i class="fal fa-plus container-details-minus-btn" onClick={handleSetNumberAdd}></i>
                                                     </div>
                                                 </div>
-                                                <span class="container-details-quantity-number-product"> 155 sản phẩm có
+                                                <span class="container-details-quantity-number-product"> {products?.quantity} sản phẩm có
                                                     sẵn</span>
                                             </div>
                                         </div>
@@ -331,7 +320,7 @@ function Details() {
                                 </div>
                                 <div class="container-details-footer-text">
                                     <span class="text-details">
-                                        asd
+                                        {products?.details}
                                     </span>
                                 </div>
                             </div>
@@ -341,7 +330,7 @@ function Details() {
                                 </div>
                                 <div class="container-details-footer-text">
                                     <span class="text-details">
-                                        sadsa
+                                        {products?.description}
                                     </span>
 
                                 </div>
@@ -356,7 +345,7 @@ function Details() {
                 <div class="app-chitiet-notifi-big">
                     <div clas="app-chitiet-notifi-check">
                         <div class="app-chitiet-notifi-icon">
-                            <i class="far fa-check app-chitiet-notifi-icon-color"></i>
+                            <i class="fas fa-check app-chitiet-notifi-icon-color"></i>
                         </div>
                         <div class="app-chitiet-notifi-text">Sản phẩm đã được thêm vào Giỏ hàng</div>
                     </div>

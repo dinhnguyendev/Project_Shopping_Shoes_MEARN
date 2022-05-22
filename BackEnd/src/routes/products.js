@@ -3,5 +3,18 @@ const router = express.Router();
 const productController = require('../app/controllers/ProductsController');
 
 router.post('/add', productController.add);
+router.get('/all', productController.all);
+router.get('/fix/:slug', productController.fix);
 router.get('/:slug', productController.show);
+router.post('/fix/noimage', productController.fixnoimage);
+router.post('/fix/image', productController.fiximage);
+router.post('/fix/imagedetails', productController.fiximagedetails);
+router.post('/fix/all', productController.fixproduct);
+router.post('/adddetails', productController.adddetails);
+router.post('/deletedetails', productController.deletedetails);
+router.post('/delete', productController.delete);
+router.post('/barn', productController.barn);
+router.get('/getallcategory', productController.getallcategory);
+router.post('/trademark', productController.trademark);
+router.get('/search/:name', productController.search);
 module.exports = router;

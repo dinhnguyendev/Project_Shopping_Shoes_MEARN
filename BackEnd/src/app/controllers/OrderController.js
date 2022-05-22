@@ -12,7 +12,14 @@ class OrderController {
             const order = await Order.create({
                 userid,
                 products: [],
-                addressOrder,
+                addressOrder: {
+                    name: addressOrder.name,
+                    phone: addressOrder.phone,
+                    provinces: addressOrder.provinces,
+                    citys: addressOrder.citys,
+                    wars: addressOrder.wars,
+                    details: addressOrder.addressOrder
+                },
                 total
             });
             arr.map(arrs => {
@@ -42,6 +49,92 @@ class OrderController {
             .populate("products.size")
             .populate("products.color")
             .populate("addressOrder")
+            .then(data => res.status(200).json(data))
+            .catch(err => res.status(500).json("loi server"))
+    }
+    checkProduct(req, res) {
+        const { id, color, size } = req.body;
+        Order.findOne({
+            products: {
+                $elemMatch: {
+                    productId: id,
+                    color,
+                    size
+                }
+            }
+            // $and: [
+            //     {
+            //         products: {
+            //             $all: {
+            //                 productId: id
+            //             }
+            //         }
+            //     },
+            //     {
+            //         products: {
+            //             $all: {
+            //                 size
+            //             }
+            //         }
+            //     },
+            //     {
+            //         products: {
+            //             $all: {
+            //                 color
+            //             }
+            //         }
+            //     }
+            //     // { "products.size": size },
+            //     // { "products.color": color }
+            // ]
+        })
+            .then(data => res.status(200).json(data))
+            .catch(err => res.status(500).json(false))
+    }
+    checkdelete(req, res) {
+        const { id } = req.body;
+        Order.findOne({
+            products: {
+                $elemMatch: {
+                    productId: id
+                }
+            }
+        })
+            .then(data => res.status(200).json(data))
+            .catch(err => res.status(500).json("loi server"))
+    }
+    updatepickup(req, res) {
+        const { id } = req.body;
+        Order.updateOne({ _id: id }, {
+            $set: {
+                active: 2
+            }
+        })
+            .then(data => res.status(200).json(data))
+            .catch(err => res.status(500).json("loi server"))
+    }
+    updatedeliver(req, res) {
+        const { id } = req.body;
+        Order.updateOne({ _id: id }, {
+            $set: {
+                active: 3
+            }
+        })
+            .then(data => res.status(200).json(data))
+            .catch(err => res.status(500).json("loi server"))
+    }
+    userIdall(req, res) {
+        const { userid } = req.params;
+        Order.find({ userid })
+            .populate('products.color')
+            .populate('products.size')
+            .populate('products.productId')
+            .then(data => res.status(200).json(data))
+            .catch(err => res.status(500).json("loi server"))
+    }
+    deleteorder(req, res) {
+        const { id } = req.body;
+        Order.deleteOne({ _id: id })
             .then(data => res.status(200).json(data))
             .catch(err => res.status(500).json("loi server"))
     }

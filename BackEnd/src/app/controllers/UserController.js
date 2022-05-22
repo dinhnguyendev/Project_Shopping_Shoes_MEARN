@@ -2,6 +2,19 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const Customers = require('../models/Customers');
 const Address = require('../models/Address');
+const multer = require('multer');
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'uploads/')
+    },
+    filename: function (req, file, cb) {
+        const filename = Date.now() + '-' + Math.round(Math.random() * 1E9)
+        cb(null, filename + '-' + file.originalname)
+    }
+})
+
+const upload = multer({ storage: storage })
+const multipleUpload = upload.fields([{ name: 'image', maxCount: 1 }, { name: 'imagedetails', maxCount: 80 }])
 
 
 class UserController {
@@ -150,31 +163,66 @@ class UserController {
             .then(data => res.status(200).json(data))
             .catch(err => res.status(500).json("loi server"))
     }
-    checked(req, res) {
-        const { userid, idAddress } = req.body;
-        Address.updateOne({ userid, "address._id": idAddress }, {
+    async getAddressbyId(req, res) {
+        const { userid, idaddress } = req.params;
+        console.log(userid);
+        console.log(idaddress);
+        const addr = await Address.findOne({
+            userid
+        })
+        const ress = await addr.address.filter(data => data._id == idaddress);
+        res.status(200).json(ress);
+
+    }
+    getinfomation(req, res) {
+        const { userid } = req.params;
+        Customers.findOne({ _id: userid })
+            .then(data => res.status(200).json(data))
+            .catch(err => res.status(500).json("Loi server"))
+
+    }
+    updateinfomationnoimage(req, res) {
+        const { userid, name, gender, name_shop, email } = req.body;
+        console.log(userid);
+        console.log(name);
+        console.log(gender);
+        console.log(name_shop);
+        console.log(email);
+        Customers.updateOne({ _id: userid }, {
             $set: {
-                "address.$.active": true
+                name, gender, name_shop, email
             }
         })
             .then(data => res.status(200).json(data))
-            .catch(err => res.status(500).json("loi server"))
+            .catch(err => res.status(500).json("Loi server"))
+
     }
-    unchecked(req, res) {
-        const { userid } = req.body;
-        Address.updateOne({ userid }, {
-            $set: {
-                "address.$[].active": false
+    async updateinfomationimage(req, res) {
+        multipleUpload(req, res, async function (err) {
+            if (!err) {
+                const userid = req.body.userid;
+                const name = req.body.name;
+                const gender = req.body.gender;
+                const name_shop = req.body.name_shop;
+                const email = req.body.email;
+                const image = await req.files['image'][0].filename;
+                console.log(userid);
+                console.log(gender);
+                console.log(name);
+                console.log(name_shop);
+                console.log(image);
+                Customers.updateOne({ _id: userid }, {
+                    $set: {
+                        name, gender, name_shop, email,
+                        avatar: image
+                    }
+                })
+                    .then(data => res.status(200).json(data))
+                    .catch(err => res.status(500).json("Loi server"))
             }
         })
-            .then(data => res.status(200).json(data))
-            .catch(err => res.status(500).json("loi server"))
+
     }
-    getchecked(req, res) {
-        const { userid } = req.body;
-        Address.findOne({ userid }, { address: { $elemMatch: { active: true } } })
-            .then(data => res.status(200).json(data))
-            .catch(err => res.status(500).json("loi server"))
-    }
+
 }
 module.exports = new UserController;

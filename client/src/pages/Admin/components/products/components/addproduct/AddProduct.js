@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { addproducts, getnavbarTrademarkDetails } from '../../../../../../redux/apiRequest';
@@ -62,7 +62,7 @@ function AddProduct() {
         setTrademarkstitle(e.target.title);
 
     }
-    useEffect(() => {
+    useLayoutEffect(() => {
         console.log(trademarks);
         const idtrademark = trademarks.trim();
         getnavbarTrademarkDetails(dispatch, navigate, idtrademark);
@@ -113,15 +113,7 @@ function AddProduct() {
     console.log(imageDetails && imageDetails.length);
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(name);
-        console.log(price_last);
-        console.log(price_now);
-        console.log(category);
-        console.log(trademark);
-        console.log(trademarkDetails);
-        console.log(image);
-        console.log(imageDetails);
-        console.log(details);
+
         if (name != '' && price_now != '' &&
             price_last != '' && details != '' &&
             description != '' && category && trademarks != ''
@@ -156,6 +148,7 @@ function AddProduct() {
                 }
             }
             addproducts(dispatch, navigate, formData, config);
+            alert("Thêm sản phẩm Thành công");
         } else {
             alert("Bạn chưa điền đầy đủ thông tin.");
         }
@@ -212,7 +205,7 @@ function AddProduct() {
                                         )
                                     })}
                                 </ul>
-                                <div className="empty"></div>
+                                {/* <div className="empty"></div> */}
                             </div>
                             <div className="add__product__check">
                                 <div className="add__product__check__text">Đã chọn :</div>
@@ -241,7 +234,6 @@ function AddProduct() {
                                 </div>
                             </div>
                             <div className="add__information__product__text">Ảnh bìa</div>
-
                         </div>
                         {
                             avatar &&
@@ -265,9 +257,7 @@ function AddProduct() {
                             {avatarDetails && avatarDetails.map(avatarDetailss => {
                                 return (
                                     <img src={avatarDetailss} alt="" className="add__information__product__input__img" />
-
                                 )
-
                             })}
                         </div>
                     </div>

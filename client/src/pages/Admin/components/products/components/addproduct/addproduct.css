@@ -109,6 +109,12 @@
     cursor: pointer;
 }
 
+.add__information__product__image__details {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
 .add__information__product__input__flex {
     display: flex;
     align-items: flex-start;

@@ -3,20 +3,33 @@ import { Link, useNavigate } from "react-router-dom";
 import './header.css';
 import logo from '../../assets/image/sport.svg';
 import { useDispatch, useSelector } from "react-redux";
-import { logout } from "../../redux/apiRequest";
+import { getproducts, getproductsBySearch, getToCart, logout } from "../../redux/apiRequest";
 import { refeshAxiosJWT } from "../../refeshAxiosJWT";
 import { loginSuccess, logoutSuccess } from "../../redux/userSlice";
 import axios from "axios";
 import jwtDecode from "jwt-decode";
+import { useEffect, useState } from "react";
 let axiosJWT = axios.create();
 function Header() {
     const user = useSelector(state => state.user.login?.currentUser);
+    const customer = useSelector(state => state.customer.getCustomer?.currentCustomer);
+    const cart = useSelector(state => state.cart.getcart?.currentCart);
+    const [name, setName] = useState('');
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const token = user?.tokensign;
-    console.log('asdasda: ' + token);
     const id = user?._id;
-    console.log((user));
+    useEffect(() => {
+        getToCart(dispatch, id);
+    }, []);
+    const handleSearch = () => {
+        console.log(name);
+        getproductsBySearch(dispatch, navigate, name);
+    }
+    const handleGetAllProduct = () => {
+        slug = "all";
+        getproducts(dispatch, navigate, slug);
+    }
     const refeshtoken = async () => {
         try {
             const res = await axios.post("http://localhost:5000/user/refesh", {
@@ -50,12 +63,11 @@ function Header() {
 
     let jwtToken = refeshAxiosJWT(user, dispatch, logoutSuccess);
     const handleLogout = () => {
-        const navigate = useNavigate();
-        const dispatch = useDispatch();
         const tokens = user?.tokensign;
-        console.log('asdasda: ' + tokens);
         const id = user?._id;
-        logout(dispatch, id, navigate, tokens, axiosJWT);
+        // localStorage.removeItem('persist:root');
+        // dispatc());
+        logout(dispatch, navigate, tokens);
     }
 
     return (
@@ -148,10 +160,11 @@ function Header() {
                             </li>
                             {user ?
                                 <li class="header-navbar-list-item header-navbar-list-item-user">
-                                    <img src="" alt=""
-                                        class="header-navbar-user-img" />
-                                    <img src="./img/avatar.png" alt=""
-                                        class="header-navbar-user-img" />
+                                    {customer?.avatar && <img src={`http://localhost:5000/${customer?.avatar}`} alt=""
+                                        class="header-navbar-user-img" /> || <img src="https://cf.shopee.vn/file/2eba44f6ff42d4419b12ab9e73652d5c_tn" alt=""
+                                            class="header-navbar-user-img" />}
+
+
                                     <span class="header-navbar-user-name">{user.phone}</span>
                                     <ul class="header-navbar-user-list">
                                         <Link to="/account/profile" class="header-navbar-user-link">
@@ -169,14 +182,14 @@ function Header() {
                                 :
                                 <div>
                                     <li class="header-navbar-list-item">
-                                        <a href="register.php" class="header-navbar-list-link">
+                                        <Link to='/register' class="header-navbar-list-link">
                                             Đăng Ký
-                                        </a>
+                                        </Link>
                                     </li>
                                     <li class="header-navbar-list-item">
-                                        <a href="login.php" class="header-navbar-list-link">
+                                        <Link to='/login' class="header-navbar-list-link">
                                             Đăng Nhập
-                                        </a>
+                                        </Link>
                                     </li>
                                 </div>
 
@@ -207,8 +220,8 @@ function Header() {
 
                         <div class="header-with-search">
                             <div class="header-width-search-flex">
-                                <input type="text" name="searchtext" class="header-with-search-input" autocomplete="off" placeholder="Nhập để tìm kiếm sản phẩm" />
-                                <button name="search" class="header-with-search-btn">
+                                <input type="text" value={name} onChange={e => setName(e.target.value)} name="searchtext" class="header-with-search-input" autocomplete="off" placeholder="Nhập để tìm kiếm sản phẩm" />
+                                <button onClick={handleSearch} name="search" class="header-with-search-btn">
                                     <i class="header-with-search-btn-icon fal fa-search"></i>
                                 </button>
 
@@ -219,12 +232,10 @@ function Header() {
                         <div class="header-with-cart">
 
                             <Link to="/cart" class="header-width-cart-hover">
-                                <i class="header-with-cart-icon far fa-shopping-cart"></i>
-                                <span class="header-width-cart-number">552</span>
+                                <i class="fal fa-shopping-cart"></i>
+                                <span class="header-width-cart-number">{cart?.length}</span>
                             </Link>
-
                         </div>
-
                     </div>
                     <div className="header__flex__big__catelogy">
                         <div className="header__flex__width">
@@ -234,7 +245,7 @@ function Header() {
                                 <li className="header__list__item">
                                     <div className="header__list__link">hướng dẫn mua hàng</div>
                                 </li>
-                                <Link to="/collection/all" className="header__list__link__to">
+                                <Link to="/collection/all" onClick={handleGetAllProduct} className="header__list__link__to">
                                     <div className="header__list__link">tất cả sản phẩm <i class="fal fa-chevron-down icon__down"></i></div>
                                     <ul className="header__list__all">
                                         <li className="header__list__product">
@@ -275,9 +286,9 @@ function Header() {
 
                                 </Link>
 
-                                <li className="header__list__item">
+                                <Link to='/huong-dan-chon-size-giay' className="header__list__item">
                                     <div className="header__list__link">cách chọn size</div>
-                                </li>
+                                </Link>
                                 <li className="header__list__item">
                                     <div className="header__list__link">hệ thống cửa hàng</div>
                                 </li>

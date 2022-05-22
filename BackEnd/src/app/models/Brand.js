@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Trademark=require('../models/Trademark');
+const Trademark = require('../models/Trademark');
 const slug = require('mongoose-slug-generator');
 const Schema = mongoose.Schema;
 mongoose.plugin(slug);
@@ -8,9 +8,10 @@ const Brand = new Schema({
     idtrademark: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'trademark',
-       
+        default: ''
+
     },
-    image: { type: String, require: true },
+    image: { type: String, require: false },
     slug: { type: String, unique: true, slug: "name" }
 },
     {

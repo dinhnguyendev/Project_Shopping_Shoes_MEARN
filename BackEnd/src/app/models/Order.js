@@ -30,8 +30,24 @@ const Order = new Schema({
         }
     ],
     addressOrder: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'address'
+        name: {
+            type: String,
+        },
+        phone: {
+            type: String,
+        },
+        provinces: {
+            type: String,
+        },
+        citys: {
+            type: String,
+        },
+        wars: {
+            type: String,
+        },
+        details: {
+            type: String,
+        },
     },
     active: {
         type: Number,

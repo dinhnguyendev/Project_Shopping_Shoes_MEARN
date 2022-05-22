@@ -12,6 +12,11 @@ const userSlice = createSlice({
             isFetching: false,
             error: false
         },
+        getInfCustomer: {
+            isFetching: false,
+            currentUser: null,
+            error: false
+        }
 
     },
     reducers: {
@@ -50,7 +55,23 @@ const userSlice = createSlice({
         logoutFailed: (state) => {
             state.login.error = true;
             state.login.isFetching = false;
-        }
+        },
+        getInfCustomerStart: (state) => {
+            state.getInfCustomer.error = false;
+            state.getInfCustomer.isFetching = true;
+            state.getInfCustomer.currentUser = null;
+        },
+        getInfCustomerSuccess: (state, action) => {
+            state.getInfCustomer.isFetching = false;
+            state.getInfCustomer.currentUser = action.payload;
+            state.getInfCustomer.error = false;
+        },
+        getInfCustomerFailed: (state) => {
+            state.getInfCustomer.error = true;
+            state.getInfCustomer.isFetching = false;
+            state.getInfCustomer.currentUser = null;
+        },
+
     }
 });
 export const {
@@ -62,6 +83,7 @@ export const {
     registerSuccess,
     logoutFailed,
     logoutStart,
-    logoutSuccess
+    logoutSuccess,
+    getInfCustomerFailed, getInfCustomerStart, getInfCustomerSuccess
 } = userSlice.actions;
 export default userSlice.reducer;

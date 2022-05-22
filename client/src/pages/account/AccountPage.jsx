@@ -6,6 +6,7 @@ import Profile from "./components/profile/Profile";
 import './accountPage.css';
 
 function AccountPage() {
+    
     return (
         <div className="account__page">
             <div className='account__page__flex'>

@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -7,23 +8,23 @@ function Pay() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const user = useSelector(state => state.user.login?.currentUser);
+    const orderAddress = useSelector(state => state.pay.orderAddress?.currentAddress);
     const product = useSelector(state => state.cart.getcart?.currentCart);
-    const address = useSelector(state => state.pay.checkedAddress?.currentAddress);
-
-    console.log(product);
     const arrproduct = [];
-    console.log(arrproduct);
-    const handleSubmit = () => {
+    console.log(orderAddress);
+    const handleSubmit = async () => {
         const userid = user._id;
-        // console.log(address);
         const arr = [];
         product.map(products => {
             if (products.active) {
                 arr.push(products);
             }
         });
-        if (Object.keys(address).length != 0) {
-            const addressOrder = address.address[0]._id;
+        if (orderAddress != null) {
+            const idAddres = await orderAddress;
+            const res = await axios.get(`http://localhost:5000/user/address/${userid}/${idAddres}`);
+            console.log(res.data[0]);
+            const addressOrder = res.data[0];
             addOrder(dispatch, navigate, userid, arr, addressOrder, total);
         } else {
             alert("Bạn chưa chọn nơi nhận hàng");
@@ -31,9 +32,7 @@ function Pay() {
     }
     let total = 0;
     return (
-
         <div class="grid-pay">
-
             <div class="container-pay-products">
                 <div class="container-pay-products-big">
                     <div class="container-pay-products-category">

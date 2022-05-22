@@ -1,6 +1,16 @@
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { getInfomationCutomer } from '../../../../redux/apiRequest';
 import './navbarAccount.css';
 function NavbarAccount() {
+    const dispatch = useDispatch();
+    const customer = useSelector(state => state.customer.getCustomer?.currentCustomer);
+    const user = useSelector(state => state.user.login?.currentUser);
+    useEffect(() => {
+        const userid = user._id;
+        getInfomationCutomer(dispatch, userid);
+    }, [user]);
     const handleShowNavigation = () => {
         //remove notification
         const ShowNotification = document.querySelector('.account-navbar-container-item__notification');
@@ -29,7 +39,7 @@ function NavbarAccount() {
             <div class="account-navbar">
                 <div class="account-navbar-heading">
                     <div class="account-navbar-heading-image">
-                        <img src="https://cf.shopee.vn/file/2eba44f6ff42d4419b12ab9e73652d5c_tn"
+                        <img src={customer?.avatar && `http://localhost:5000/${customer?.avatar}` || "https://cf.shopee.vn/file/2eba44f6ff42d4419b12ab9e73652d5c_tn"}
                             alt="" class="account-navbar-heading-img" />
                     </div>
                     <div class="account-navbar-heading-text">

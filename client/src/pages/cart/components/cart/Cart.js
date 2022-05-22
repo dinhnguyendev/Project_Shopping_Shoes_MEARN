@@ -1,5 +1,5 @@
 
-import { useEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addNumberCart, checkeds, deleteCart, getToCart, setDefaultChecked, uncheckeds } from '../../../../redux/apiRequest';
 import { useNavigate } from 'react-router-dom';
@@ -7,13 +7,10 @@ import * as ReactDOM from 'react-dom';
 import './cart.css';
 function Cart() {
     const navigate = useNavigate();
-    const user = useSelector(state => state.user.login?.currentUser);
-    if (!user) {
-        navigate("/login");
-        return;
-    }
-    const userid = user._id;
     const dispatch = useDispatch();
+    const user = useSelector(state => state.user.login?.currentUser);
+    const userid = user?._id;
+
     const [number, setNumber] = useState([]);
     const [checked, setChecked] = useState([]);
     // const [price, setPrice] = useState(Number);
@@ -148,7 +145,7 @@ function Cart() {
                             </div>
 
                             <form action="" method='post'>
-                                {cart.map((carts, index) => (
+                                {cart?.map((carts, index) => (
                                     <div key={carts._id} div class="container-cart-details-products" >
                                         <div class="container-cart-details-products-input">
                                             <input type="checkbox" onChange={handleCheck} name="" value={index} class="container-cart-details-products-input-check" />
@@ -158,7 +155,7 @@ function Cart() {
                                                 <div class="container-cart-details-products-product-item1">
                                                     <a href="" class="container-cart-details-products-link1">
                                                         <div class="container-cart-details-products-image">
-                                                            <img src="https://scontent.fsgn13-2.fna.fbcdn.net/v/t39.30808-6/p843x403/272187781_504223491048732_5114414854160379350_n.jpg?_nc_cat=108&ccb=1-5&_nc_sid=730e14&_nc_ohc=mdeOvaazK1sAX-89BTa&_nc_ht=scontent.fsgn13-2.fna&oh=00_AT9lYOmkm6UxLTEmZFdzn5aB3Lhh3X5vzyOAbA_JaQbsog&oe=61F97D5C"
+                                                            <img src={`http://localhost:5000/${carts.productId.image}`}
                                                                 alt="" class="container-cart-details-products-img" />
                                                         </div>
                                                     </a>

@@ -33,16 +33,11 @@ const paySlice = createSlice({
             error: false,
             currentAddress: null
         },
-        activeAddress: {
+        orderAddress: {
             isFetching: false,
             error: false,
             currentAddress: null
-        },
-        checkedAddress: {
-            isFetching: false,
-            error: false,
-            currentAddress: {}
-        },
+        }
     },
     reducers: {
         getToAddressStart: (state) => {
@@ -135,35 +130,20 @@ const paySlice = createSlice({
             state.deleteAddress.currentAddress = null;
             state.deleteAddress.error = true;
         },
-        activeAddressStart: (state) => {
-            state.activeAddress.isFetching = true;
-            state.activeAddress.currentAddress = null;
-            state.activeAddress.error = false;
+        orderAddressStart: (state) => {
+            state.orderAddress.isFetching = true;
+            state.orderAddress.currentAddress = null;
+            state.orderAddress.error = false;
         },
-        activeAddressSuccess: (state, action) => {
-            state.activeAddress.isFetching = false;
-            state.activeAddress.currentAddress = action.payload;
-            state.activeAddress.error = false;
+        orderAddressSuccess: (state, action) => {
+            state.orderAddress.isFetching = false;
+            state.orderAddress.currentAddress = action.payload;
+            state.orderAddress.error = false;
         },
-        activeAddressFailed: (state) => {
-            state.activeAddress.isFetching = false;
-            state.activeAddress.currentAddress = null;
-            state.activeAddress.error = true;
-        },
-        checkedAddressStart: (state) => {
-            state.checkedAddress.isFetching = true;
-            state.checkedAddress.currentAddress = {};
-            state.checkedAddress.error = false;
-        },
-        checkedAddressSuccess: (state, action) => {
-            state.checkedAddress.isFetching = false;
-            state.checkedAddress.currentAddress = action.payload;
-            state.checkedAddress.error = false;
-        },
-        checkedAddressFailed: (state) => {
-            state.checkedAddress.isFetching = false;
-            state.checkedAddress.currentAddress = {};
-            state.checkedAddress.error = true;
+        orderAddressFailed: (state) => {
+            state.orderAddress.isFetching = false;
+            state.orderAddress.currentAddress = null;
+            state.orderAddress.error = true;
         },
     }
 })
@@ -173,8 +153,7 @@ export const { getToAddressStart, getToAddressFailed, getToAddressSuccess,
     addressSubmitFailed, addressSubmitStart, addressSubmitSuccess,
     getToAddressUserFailed, getToAddressUserStart, getToAddressUserSuccess,
     deleteAddressFailed, deleteAddressSuccess, deleteAddressStart,
-    activeAddressFailed, activeAddressStart, activeAddressSuccess,
-    checkedAddressFailed, checkedAddressSuccess, checkedAddressStart
+    orderAddressFailed, orderAddressSuccess, orderAddressStart
 }
     = paySlice.actions;
 export default paySlice.reducer;

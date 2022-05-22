@@ -11,7 +11,7 @@ const Product = new Schema({
     name: { type: String, require: true },
     price_now: { type: Number, require: true },
     price_last: { type: Number, require: false, default: 0 },
-    quantity: { type: Number, require: false },
+    quantity: { type: Number, require: false.valueOf, default: 0 },
     image: { type: String, require: true },
     details: { type: String },
     description: { type: String },
@@ -42,6 +42,9 @@ const Product = new Schema({
                 type: mongoose.Schema.Types.ObjectId,
                 ref: 'size',
                 require: false
+            },
+            quantity: {
+                type: Number,
             }
         }
     ],

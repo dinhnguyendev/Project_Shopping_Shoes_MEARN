@@ -5,24 +5,19 @@ import {
     deleteCartFailed, deleteCartStart, deleteCartSuccess,
     getToCartFailed, getToCartStart, getToCartSuccess, getToPayFailed, getToPayStart, getToPaySuccess, payCartFailed, payCartStart, payCartSuccess
 } from "./cartSlice";
+import { getCustomerFailed, getCustomerStart, getCustomerSuccess } from "./customerSlice";
 import { getnavbarFailed, getnavbarStart, getnavbarSuccess, getnavbarTrademarkDetailsFailed, getnavbarTrademarkDetailsStart, getnavbarTrademarkDetailsSuccess, getnavbarTrademarkFailed, getnavbarTrademarkStart, getnavbarTrademarkSuccess } from "./navbarSlice";
-import { addOrderFailed, addOrderStart, addOrderSuccess, getOrderFailed, getOrderStart, getOrderSuccess } from "./orderSlice";
+import { addOrderFailed, addOrderStart, addOrderSuccess, checkOrderFailed, checkOrderStart, checkOrderSuccess, getOrderByUserIdFailed, getOrderByUserIdStart, getOrderByUserIdSuccess, getOrderDetailsFailed, getOrderDetailsStart, getOrderDetailsSuccess, getOrderFailed, getOrderStart, getOrderSuccess } from "./orderSlice";
 import {
-    activeAddressFailed,
-    activeAddressStart,
-    activeAddressSuccess,
     addressSubmitFailed,
     addressSubmitStart,
     addressSubmitSuccess,
-    checkedAddressFailed,
-    checkedAddressStart,
-    checkedAddressSuccess,
     deleteAddressFailed,
     deleteAddressStart,
     deleteAddressSuccess,
     getToAddressCityFailed, getToAddressCityStart, getToAddressCitySuccess,
     getToAddressFailed, getToAddressStart, getToAddressSuccess, getToAddressUserFailed, getToAddressUserStart, getToAddressUserSuccess, getToAddressWarsFailed,
-    getToAddressWarsStart, getToAddressWarsSuccess,
+    getToAddressWarsStart, getToAddressWarsSuccess, orderAddressFailed, orderAddressStart, orderAddressSuccess,
 }
     from "./paySlice";
 import {
@@ -30,10 +25,31 @@ import {
     getproductFailed, getproductStart, getproductSuccsess,
     addproductsStart,
     addproductsSuccess,
-    addproductsFailed
+    addproductsFailed,
+    fixproductsStart,
+    fixproductsSuccess,
+    fixproductsFailed,
+    fixproductsAllStart,
+    fixproductsAllSuccess,
+    fixproductsAllFailed,
+    colorStart,
+    colorSuccess,
+    colorFailed,
+    sizeStart,
+    sizeSuccess,
+    sizeFailed,
+    adddetailsStart,
+    adddetailsSuccess,
+    adddetailsFailed,
+    deletedetailsStart,
+    deletedetailsSuccess,
+    deletedetailsFailed
 }
     from "./productSlice";
 import {
+    getInfCustomerFailed,
+    getInfCustomerStart,
+    getInfCustomerSuccess,
     loginFailed,
     loginStart,
     loginSuccess,
@@ -65,10 +81,10 @@ export const registerUser = async (user, dispatch, navigate) => {
         dispatch(registerFailed());
     }
 }
-export const logout = async (dispatch, id, navigate, tokens, axiosJWT) => {
+export const logout = async (dispatch, navigate, tokens) => {
     dispatch(logoutStart());
     try {
-        await axios.post("http://localhost:5000/user/logout", {
+        await axios.post("http://localhost:5000/user/logout", { datas: "hello" }, {
             headers: {
                 token: `Bearer ${tokens}`
             }
@@ -84,6 +100,15 @@ export const getproducts = async (dispatch, navigate, slug) => {
     dispatch(getproductStart());
     try {
         const res = await axios.get(`http://localhost:5000/collection/${slug}`);
+        dispatch(getproductSuccsess(res.data));
+    } catch (error) {
+        dispatch(getproductFailed());
+    }
+}
+export const getproductsBySearch = async (dispatch, navigate, name) => {
+    dispatch(getproductStart());
+    try {
+        const res = await axios.get(`http://localhost:5000/products/search/${name}`);
         dispatch(getproductSuccsess(res.data));
     } catch (error) {
         dispatch(getproductFailed());
@@ -302,39 +327,15 @@ export const deleteAddress = async (dispatch, navigate, userid, idAddress) => {
         dispatch(deleteAddressFailed());
     }
 }
-export const activeAddress = async (dispatch, navigate, userid, idAddress) => {
-    dispatch(activeAddressStart());
+export const orderAdress = async (dispatch, idAddress) => {
+    dispatch(orderAddressStart());
     try {
-        const res = await axios.post("http://localhost:5000/user/address/checked", {
-            userid, idAddress
-        });
-        dispatch(activeAddressSuccess(res.data));
+        dispatch(orderAddressSuccess(idAddress));
     } catch (error) {
-        dispatch(activeAddressFailed());
+        dispatch(orderAddressFailed());
     }
 }
-export const unactiveAddress = async (dispatch, navigate, userid) => {
-    dispatch(activeAddressStart());
-    try {
-        const res = await axios.post("http://localhost:5000/user/address/unchecked", {
-            userid
-        });
-        dispatch(activeAddressSuccess(res.data));
-    } catch (error) {
-        dispatch(activeAddressFailed());
-    }
-}
-export const checkedAddress = async (dispatch, navigate, userid) => {
-    dispatch(checkedAddressStart());
-    try {
-        const res = await axios.post("http://localhost:5000/user/address/getchecked", {
-            userid
-        });
-        dispatch(checkedAddressSuccess(res.data));
-    } catch (error) {
-        dispatch(checkedAddressFailed());
-    }
-}
+
 export const addOrder = async (dispatch, navigate, userid, arr, addressOrder, total) => {
     dispatch(addOrderStart());
     try {
@@ -356,4 +357,148 @@ export const getOrder = async (dispatch) => {
         dispatch(getOrderFailed());
     }
 }
+export const getOrderDetails = async (dispatch, id) => {
+    dispatch(getOrderDetailsStart());
+    try {
+        const res = await axios.get(`http://localhost:5000/order/${id}/details`);
+        dispatch(getOrderDetailsSuccess(res.data));
+    } catch (error) {
+        dispatch(getOrderDetailsFailed());
+    }
+}
+export const getProductFix = async (dispatch, slug) => {
+    dispatch(fixproductsStart());
+    try {
+        const res = await axios.get(`http://localhost:5000/products/fix/${slug}`);
+        dispatch(fixproductsSuccess(res.data));
+    } catch (error) {
+        dispatch(fixproductsFailed());
+    }
+}
+export const FixProductAll = async (dispatch, formData, config) => {
+    dispatch(fixproductsAllStart());
+    try {
+        const res = await axios.post('http://localhost:5000/products/fix/all', formData, config);
+        dispatch(fixproductsAllSuccess(res.data));
+    } catch (error) {
+        dispatch(fixproductsAllFailed());
+    }
+}
+export const FixProductNoImage = async (dispatch, formData, config) => {
+    dispatch(fixproductsAllStart());
+    try {
+        const res = await axios.post('http://localhost:5000/products/fix/noimage', formData, config);
+        dispatch(fixproductsAllSuccess(res.data));
+    } catch (error) {
+        dispatch(fixproductsAllFailed());
+    }
+}
+export const FixProductImage = async (dispatch, formData, config) => {
+    dispatch(fixproductsAllStart());
+    try {
+        const res = await axios.post('http://localhost:5000/products/fix/image', formData, config);
+        dispatch(fixproductsAllSuccess(res.data));
+    } catch (error) {
+        dispatch(fixproductsAllFailed());
+    }
+}
+export const FixProductImageDetails = async (dispatch, formData, config) => {
+    dispatch(fixproductsAllStart());
+    try {
+        const res = await axios.post('http://localhost:5000/products/fix/imagedetails', formData, config);
+        dispatch(fixproductsAllSuccess(res.data));
+    } catch (error) {
+        dispatch(fixproductsAllFailed());
+    }
+}
+export const getColor = async (dispatch) => {
+    dispatch(colorStart());
+    try {
+        const res = await axios.get('http://localhost:5000/color/all');
+        dispatch(colorSuccess(res.data));
+    } catch (error) {
+        dispatch(colorFailed());
+    }
+}
+export const getSize = async (dispatch) => {
+    dispatch(sizeStart());
+    try {
+        const res = await axios.get('http://localhost:5000/size/all');
+        dispatch(sizeSuccess(res.data));
+    } catch (error) {
+        dispatch(sizeFailed());
+    }
+}
+export const addProductDetails = async (dispatch, dataSubmit) => {
+    dispatch(adddetailsStart());
+    try {
+        const res = await axios.post('http://localhost:5000/products/adddetails', { dataSubmit });
+        dispatch(adddetailsSuccess(res.data));
+    } catch (error) {
+        dispatch(adddetailsFailed());
+    }
+}
+export const deleteProductDetails = async (dispatch, slug, iddetails, number) => {
+    dispatch(deletedetailsStart());
+    try {
+        const res = await axios.post('http://localhost:5000/products/deletedetails', { slug, iddetails, number });
+        dispatch(deletedetailsSuccess(res.data));
+    } catch (error) {
+        dispatch(deletedetailsFailed());
+    }
+}
+export const deleteProduct = async (dispatch, slug) => {
+    const res = await axios.post('http://localhost:5000/products/delete', { slug });
+
+}
+export const checkOrder = async (dispatch, id, color, size) => {
+    await axios.post('http://localhost:5000/order/check', { id, color, size });
+    // dispatch(checkOrderStart());
+    // try {
+    //     dispatch(checkOrderSuccess(res.data));
+    // } catch (error) {
+    //     dispatch(checkOrderFailed());
+    // }
+
+}
+// export const checkDeleteProduct = async (id) => {
+//     await axios.post('http://localhost:5000/order/checkdelete', { id })
+
+// }
+// export const getorderAddress = async (userid, idaddress) => {
+//     await axios.get(`http://localhost:5000/user/address/${userid}/${idaddress}`)
+//     .then(data=> return )
+// }
+export const updateOrderPickup = async (id) => {
+    await axios.post('http://localhost:5000/order/updatepickup', { id });
+}
+export const updateOrderDeliver = async (id) => {
+    await axios.post('http://localhost:5000/order/updatedeliver', { id });
+}
+export const getInfomationCutomer = async (dispatch, userid) => {
+    dispatch(getCustomerStart());
+    try {
+        const res = await axios.get(`http://localhost:5000/user/getinfomation/${userid}`);
+        dispatch(getCustomerSuccess(res.data));
+    } catch (error) {
+        dispatch(getCustomerFailed());
+    }
+}
+export const updateInfCustomer = async (userid, name, gender, name_shop, email) => {
+    await axios.post('http://localhost:5000/user/updateinfomation/noimage', { userid, name, gender, name_shop, email })
+}
+export const getOrderByUserId = async (dispatch, userid) => {
+    dispatch(getOrderByUserIdStart());
+    try {
+        const res = await axios.get(`http://localhost:5000/order/${userid}/all`)
+        dispatch(getOrderByUserIdSuccess(res.data))
+    } catch (error) {
+        dispatch(getOrderByUserIdFailed());
+    }
+}
+
+export const deleteOrderById = async (id) => {
+    await axios.post('http://localhost:5000/order/deleteorder/', { id })
+}
+
 

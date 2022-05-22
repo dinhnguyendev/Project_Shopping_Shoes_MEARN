@@ -7,7 +7,7 @@ function Collection() {
     return (
         <div>
             <div class="home__gird__colum__10">
-                <div class="home__container__sort">
+                {/* <div class="home__container__sort">
                     <div class="home__container__sort__list">
                         <div class="home__container__sort__heading">sắp xếp theo</div>
                         <div class="home__container__sort__item">
@@ -26,25 +26,25 @@ function Collection() {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
                 <div class="home__container__body">
                     <div class="home__container__body__flex">
                         <div class="home__container__body__big">
-                            {products.map((product) => (
+                            {products?.map((product) => (
                                 <Link to={`/products/${product.slug}`} key={product._id} class="home__container__body__link">
                                     <div class="home__container__body__item">
                                         <div class="home__container__body__image">
-                                            <img src="https://product.hstatic.net/200000278317/product/giay-da-banh-nike-react-phantom-gt2-pro-tf-dm0735-003-xanh-la-den-1_7cd6dd4fb9bd48e2b5cb037a3e0d6346_large.jpg"
+                                            <img src={`http://localhost:5000/${product.image}`}
                                                 alt="" class="home__container__body__img" />
                                             <div class="home__container__bg">
                                                 <h1 class="home__container__bg__title">nike</h1>
                                             </div>
                                         </div>
                                         <div class="home__position__love">yêu thích +</div>
-                                        <div class="home__position__sale">
+                                        {/* <div class="home__position__sale">
                                             <span class="home__position__sale__number">55%</span>
                                             <span class="home__position__sale__text">Giảm</span>
-                                        </div>
+                                        </div> */}
                                         <div class="home__container__body__content">
                                             <div class="home__container__body__heading">
                                                 {product.name}
@@ -53,10 +53,10 @@ function Collection() {
                                                 <div class="home__container__body__price__flex">
                                                     <div class="home__container__body__flex__price">
                                                         <div class="home__container__body__price__last">
-                                                            ₫55.000
+                                                            ₫{product.price_last.toLocaleString('en-US', { style: 'currency', currency: 'VND' })}
                                                         </div>
                                                         <div class="home__container__body__price__now">
-                                                            <span class="money">đ</span>79.000
+                                                            <span class="money">đ</span>{product.price_now.toLocaleString('en-US', { style: 'currency', currency: 'VND' })}
                                                         </div>
                                                     </div>
                                                     <div class="home__container__body__flex__icon">

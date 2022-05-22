@@ -6,6 +6,7 @@ import productReducer from './productSlice';
 import navbarReducer from './navbarSlice';
 import cartReducer from './cartSlice';
 import orderReducer from './orderSlice';
+import customerReducer from './customerSlice';
 
 import {
     persistStore,
@@ -25,7 +26,8 @@ const rootReducer = combineReducers({
     navbar: navbarReducer,
     cart: cartReducer,
     pay: payReducer,
-    order: orderReducer
+    order: orderReducer,
+    customer: customerReducer
 })
 
 const persistConfig = {

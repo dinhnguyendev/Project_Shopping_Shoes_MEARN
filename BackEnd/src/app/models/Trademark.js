@@ -7,9 +7,9 @@ const Trademark = new Schema({
         type: String,
         require: true,
     },
-    iamge: {
+    image: {
         type: String,
-        require: true
+        require: false
     },
     slug: {
         type: String,

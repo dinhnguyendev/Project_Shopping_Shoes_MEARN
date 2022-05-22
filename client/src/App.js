@@ -15,6 +15,11 @@ import AddProduct from './pages/Admin/components/products/components/addproduct/
 import OrderPage from './pages/Admin/components/order/OrderPage';
 import OrderAdmin from './pages/Admin/components/order/components/order/Order';
 import OrderDetails from './pages/Admin/components/order/components/orderdetails/OrderDetails';
+import FixProduct from './pages/Admin/components/products/components/fixproduct/FixProduct';
+import AllProduct from './pages/Admin/components/products/components/all/AllProduct';
+import AddSize from './pages/Admin/components/products/components/addsize/AddSize';
+import Category from './pages/Admin/components/category/Category';
+import AllCategory from './pages/Admin/components/allctegory/AllCategory';
 const PayPage = React.lazy(() => import('./pages/pay/PayPage'));
 const Profile = React.lazy(() => import('./pages/account/components/profile/Profile'));
 const CartPage = React.lazy(() => import('./pages/cart/CartPage'));
@@ -60,11 +65,16 @@ function App() {
             <Route path='/admin' element={<AdminPage />} >
               <Route path='product' element={<ProductsPage />}>
                 <Route path='add' element={<AddProduct />} />
+                <Route path='adddetails/:slug' element={<AddSize />} />
+                <Route path='all' element={<AllProduct />} />
+                <Route path='fix/:slug' element={<FixProduct />} />
               </Route>
               <Route path='order' element={<OrderPage />}>
                 <Route path='all' element={<OrderAdmin />} />
-                <Route path='details' element={<OrderDetails />} />
+                <Route path='details/:id' element={<OrderDetails />} />
               </Route>
+              <Route path='category' element={<Category />} />
+              <Route path='all' element={<AllCategory />} />
             </Route>
           </Routes>
 

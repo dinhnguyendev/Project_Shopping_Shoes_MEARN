@@ -2,11 +2,10 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './address.css';
 import { useNavigate } from 'react-router-dom';
-import { activeAddress, addAddress, checkedAddress, deleteAddress, getToAddressCity, getToAddressCityEmpty, getToAddressUser, getToAddressWars, getToAddressWarsEmpty, unactiveAddress } from '../../../../redux/apiRequest';
+import { addAddress, checkedAddress, deleteAddress, getToAddressCity, getToAddressCityEmpty, getToAddressUser, getToAddressWars, getToAddressWarsEmpty, orderAdress, } from '../../../../redux/apiRequest';
 function Address() {
     const user = useSelector(state => state.user.login?.currentUser);
     const arrAdd = useSelector(state => state.pay.getToAddressUser.currentAddress?.address);
-    console.log(arrAdd);
     const province = useSelector(state => state.pay.getToAddress.currentAddress);
     const city = useSelector(state => state.pay.getToAddressCity.currentAddressCity?.districts);
     const wars = useSelector(state => state.pay.getToAddressWars.currentAddressWars?.wards);
@@ -18,6 +17,7 @@ function Address() {
     const [cityState, setCityState] = useState('');
     const [warsState, setWarsState] = useState('');
     const [details, setDetails] = useState('');
+    const [addressOrder, setAddressOrder] = useState('');
     const handleShowModel = () => {
         const elementModel = document.querySelector('.modal-app');
         elementModel.classList.add('open');
@@ -26,7 +26,6 @@ function Address() {
         const elementModel = document.querySelector('.modal-app');
         elementModel.classList.remove('open');
     }
-
     const handleSubmit = async () => {
         const userid = user._id;
         const provincesAddress = provincesState;
@@ -49,7 +48,6 @@ function Address() {
         } else {
             alert("vui lòng điền đầy đủ thông tin");
         }
-
     }
     const handleProvinces = (e) => {
         const str = e.target.value;
@@ -69,7 +67,6 @@ function Address() {
         const code = arr[0];
         const nameCity = arr[1];
         getToAddressWars(dispatch, navigate, code);
-
         setCityState(nameCity);
     }
     const handleWars = (e) => {
@@ -87,16 +84,12 @@ function Address() {
             getToAddressUser(dispatch, navigate, userid);
         }
     }
-    const handleChecked = (e) => {
+    const handleChecked = async (e) => {
         const userid = user._id;
         const idAddress = e.target.value;
-        // console.log(e.target.value);
-        unactiveAddress(dispatch, navigate, userid);
-        activeAddress(dispatch, navigate, userid, idAddress);
-        checkedAddress(dispatch, navigate, userid);
+        setAddressOrder(idAddress);
+        await orderAdress(dispatch, idAddress);
     }
-    const userid = user._id;
-    unactiveAddress(dispatch, navigate, userid);
     return (
         <div className="">
             <div class="container-pay-big">

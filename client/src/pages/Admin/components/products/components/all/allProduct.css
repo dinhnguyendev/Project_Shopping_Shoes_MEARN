@@ -1,0 +1,329 @@
+.container-big {}
+
+.container-see-big {
+    display: flex;
+    align-items: center;
+    text-transform: capitalize;
+    border: 1px solid #666;
+    z-index: 3;
+    width: 100%;
+    background-color: #f6f6f6;
+    border-radius: 2px;
+    color: #666;
+}
+
+
+
+.container-see-heading-name {
+    flex: 4;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    justify-content: center;
+    padding: 10px 0px;
+    border-right: 1px solid #666;
+
+}
+
+.container-see-heading-img {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    justify-content: center;
+
+    padding: 10px 0px;
+    border-right: 1px solid #666;
+
+}
+
+.container-see-heading-price {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    justify-content: center;
+    padding: 10px 0px;
+    border-right: 1px solid #666;
+}
+
+.container-see-heading-price-last {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    justify-content: center;
+
+    padding: 10px 0px;
+    border-right: 1px solid #666;
+
+}
+
+.container-see-heading-quantity {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    justify-content: center;
+    padding: 10px 0px;
+    border-right: 1px solid #666;
+
+}
+
+.container-see-heading-details {
+    flex: 2;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    justify-content: center;
+
+}
+
+.container-see-products {
+    position: relative;
+    background-color: #e4dcdc;
+}
+
+.container-see-data {
+    display: flex;
+    align-items: center;
+    border: 1px solid rgb(0 0 0 / 0.3);
+    padding: 5px 0px;
+    margin-top: 2px;
+    background-color: #ffffff;
+}
+
+.container-see-data__activity {
+    flex: 2;
+    display: flex;
+    align-items: center;
+    color: #353232;
+    height: 100%;
+    justify-content: center;
+
+}
+
+.activity {
+    position: relative;
+    margin: 0px 5px;
+    padding: 3px 8px;
+
+}
+
+.activity:hover {
+    background-color: rgb(180, 178, 178);
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.container-see-data-name {
+    flex: 4;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    text-overflow: clip;
+    overflow: hidden;
+    align-items: center;
+    color: #353232;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    word-break: break-all;
+    height: 100%;
+    border-right: 1px solid rgb(0 0 0 / 0.3);
+
+}
+
+.container-see-data-img {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    border-right: 1px solid rgb(0 0 0 / 0.3);
+
+}
+
+.container-see-data-image {
+    width: 70px;
+    height: 50px;
+    margin: 0 auto;
+
+}
+
+.container-see-data-price-last {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    color: #353232;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    word-break: break-all;
+    text-align: center;
+    justify-content: center;
+    height: 100%;
+    border-right: 1px solid rgb(0 0 0 / 0.3);
+}
+
+.container-see-data-color {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    color: #353232;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    word-break: break-all;
+    text-align: center;
+    justify-content: center;
+}
+
+.container-see-data-price {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    color: #353232;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    word-break: break-all;
+    text-align: center;
+    justify-content: center;
+    height: 100%;
+    border-right: 1px solid rgb(0 0 0 / 0.3);
+}
+
+.container-see-data-quantity {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    color: #353232;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    word-break: break-all;
+    text-align: center;
+    justify-content: center;
+    height: 100%;
+    border-right: 1px solid rgb(0 0 0 / 0.3);
+}
+
+.container-see-data-details {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #353232;
+    font-weight: 600;
+    transition: all 0.2s linear;
+    text-decoration: none;
+    text-transform: capitalize;
+    height: 100%;
+    border-right: 1px solid rgb(0 0 0 / 0.3);
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+}
+
+.brg_color {
+    background-color: #666 !important;
+    cursor: pointer;
+    border-radius: 5px;
+    color: #ffffff;
+
+}
+
+.show {
+    display: block !important;
+}
+
+.activity__details {
+
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 100%;
+    background-color: #c0bcbc;
+    z-index: 10;
+    display: none;
+}
+
+.activity__details__content {
+    padding: 10px;
+}
+
+.activity__details__name {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    text-overflow: clip;
+    overflow: hidden;
+    font-weight: 500;
+}
+
+.activity__details__info {
+    margin: 10px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.activity__details__item {
+    flex: 2;
+}
+
+.activity__details__item__flex {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.activity__details__numbers {
+    margin-left: 5px;
+}
+
+.activity__details__list {
+    display: flex;
+    align-items: center;
+}
+
+.activity__details__catogory {
+    display: flex;
+    align-items: center;
+}
+
+.activity__details__text {
+    width: 120px;
+    font-weight: 500;
+}
+
+.activity__details__texts {
+    font-weight: 500;
+}
+
+.activity__details__number {
+    text-transform: capitalize;
+}
+
+.activity__details__image {
+    flex: 1;
+}
+
+.activity__details__img {
+    width: 80%;
+    height: 200px;
+}
+
+.activity__details__button {
+    margin-top: 15px;
+}
+
+.activity__details__button__back {
+    border: 1px solid #666;
+    background-color: #fff;
+    cursor: pointer;
+    padding: 5px 20px;
+    border-radius: 3px;
+    color: #111;
+    font-weight: 500;
+}
+
+.activity__details__button__back:hover {
+    background-color: #999;
+}
